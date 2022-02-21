@@ -42,6 +42,7 @@ class MainController extends AbstractController
      */
     public function monProfil ($id, ParticipantRepository $repository, Request $request, EntityManagerInterface $entityManager) {
      $participant = new Participant();
+     $participant = $repository->find($id);
      $form = $this->createForm(ProfilType::class, $participant);
      $form->handleRequest($request);
 
