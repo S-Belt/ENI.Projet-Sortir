@@ -1,13 +1,13 @@
 <nav>
 
-    {% if app.user %}
-        <a href="{{ path('main_home') }}">Accueil</a>
-        <a href="{{ path('main_', {"id": app.user.id}) }}">Mon profil</a>
-        <a href="{{ path('app_logout') }}">Se Déconnecter ({{ app.user.userIdentifier }})</a>
-    {% if app.user.role = role-admin %}
-        <a href="{{ path('main_' )}}">Villes</a>
-        <a href="{{ path('main_' )}}">Campus </a>
-    {% else %}
-        <a href="{{ path('app_login') }}">Se connecter</a>
-    {% endif %}
+        {# {% if app.user %} #}
+        <a href="#">Accueil</a>
+        <a href="#">Mon profil</a>
+        <a href="#">Se Déconnecter</a>
+{#{% if app.user.role = role-admin %}#}
+        <a href="#">Villes</a>
+        <a href="#">Campus </a>
+   {# {% else %}#}
+        <a href="#">Se connecter</a>
+{#  {% endif %}#}
 </nav>
