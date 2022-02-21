@@ -13,7 +13,12 @@
 
     {{ form_row(form.telephone) }}
 
-    {{ form_row(form.nom) }}
+    {{ form_row(form.password, {'attr':{'value': ''}}) }}
+    <label for="pass">Confirmation:</label>
+    <input id="pass" type="password">
+    {{ form_row(form.campus) }}
+    <input type="file">
+
 
 
     <button type="submit" class="btn">Enregistrer</button>
