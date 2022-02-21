@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("main/", name="main_")
+ * @Route("/", name="main_")
  */
 class MainController extends AbstractController
 {
