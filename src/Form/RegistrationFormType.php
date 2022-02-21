@@ -21,6 +21,7 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
+            ->add('pseudo')
             ->add('email')
             ->add('telephone')
             ->add('campus', EntityType::class,['class'=>Campus::class,'choice_label'=>'nom'])
