@@ -45,7 +45,7 @@ class MainController extends AbstractController
      $form = $this->createForm(ProfilType::class, $participant);
      $form->handleRequest($request);
 
-     if ($form-> isValid() && $form->isSubmitted()) {
+     if ( $form->isSubmitted() && $form-> isValid()) {
          $entityManager->persist($participant);
          $entityManager->flush();
          return $this->render("profil.html.twig");

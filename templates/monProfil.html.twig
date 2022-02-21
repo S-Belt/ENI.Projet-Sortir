@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+<h2>Mon profil</h2>
+{% endblock %}
+
+{% block main %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    <button type="submit" class="btn">Enregistrer</button>
+    <a href="{{ path('main_home') }}">Accueil</a>
+    {{ form_end(form) }}
+{% endblock %}
+
