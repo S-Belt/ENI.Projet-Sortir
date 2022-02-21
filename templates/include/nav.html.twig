@@ -6,7 +6,7 @@
         <a href="{{ path('app_logout') }}">Se Déconnecter ({{ app.user.userIdentifier }})</a>
     {% if app.user.role = role-admin %}
         <a href="{{ path('main_' )}}">Villes</a>
-        <a href="{{ path('main_' )}}">Campus</a>
+        <a href="{{ path('main_' )}}">Campus </a>
     {% else %}
         <a href="{{ path('app_login') }}">Se connecter</a>
     {% endif %}
