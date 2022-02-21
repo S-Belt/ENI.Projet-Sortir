@@ -14,6 +14,7 @@
     {{ form_row(form.telephone) }}
 
     {{ form_row(form.password, {'attr':{'value': ''}}) }}
+    {{ form_row(form.email, {'attr':{'class': 'HiddenType'}}) }}
     <label for="pass">Confirmation:</label>
     <input id="pass" type="password">
     {{ form_row(form.campus) }}
