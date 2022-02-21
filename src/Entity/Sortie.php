@@ -61,10 +61,10 @@ class Sortie
     private $participants;
 
     /**
-     * @ORM\ManyToOne(targetEntity=lieu::class, inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="sorties")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $lieu;
+    private $Lieu;
 
     /**
      * @ORM\ManyToOne(targetEntity=Etat::class, inversedBy="sorties")
@@ -201,12 +201,12 @@ class Sortie
 
     public function getLieu(): ?Lieu
     {
-        return $this->lieu;
+        return $this->Lieu;
     }
 
     public function setLieu(?Lieu $lieu): self
     {
-        $this->lieu = $lieu;
+        $this->Lieu = $lieu;
 
         return $this;
     }
