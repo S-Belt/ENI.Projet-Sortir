@@ -1,2 +1,2 @@
 <?php
-echo 'bonjour';
+echo 'bonjour on a reussi avant mercredi';
