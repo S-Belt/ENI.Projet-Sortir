@@ -50,6 +50,7 @@ class MainController extends AbstractController
          $entityManager->flush();
          return $this->render("profil.html.twig");
      }
+     return $this->render("monProfil.html.twig", ["form"=>$form->createView()]);
 
     }
 }
