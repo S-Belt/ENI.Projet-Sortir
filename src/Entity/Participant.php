@@ -52,15 +52,6 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $telephone;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $mail;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $motPasse;
 
     /**
      * @ORM\Column(type="boolean")
