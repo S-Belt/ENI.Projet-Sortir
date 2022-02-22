@@ -31,17 +31,18 @@ class MainController extends AbstractController
      */
     public function home(CampusRepository $repository, SortieRepository $sortieRepository): Response
     {
-        $organisateur = $this->getUser()->getNom();
+        $organisateur = $this->getUser()->getId();
 
         $campus = $repository->findAll();
+
         //$liste = $sortieRepository->liste($organisateur);
-        $listes = $sortieRepository->findAll();
+        $liste = $sortieRepository->findAll();
 
 
 
         return $this->render('main/home.html.twig', [
             'campus' => $campus,
-            'liste' => $listes
+            'liste' => $liste
         ]);
     }
 

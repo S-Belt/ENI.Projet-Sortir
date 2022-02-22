@@ -49,16 +49,17 @@ class SortieRepository extends ServiceEntityRepository
     */
     public function liste($value)
     {
-        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder = $this->createQueryBuilder('qb');
         $queryBuilder
-            ->andWhere('s.organisateur = :val')
-            ->andWhere('s.participants = :val')
-            ->andWhere('s.participants != :val')
-            ->setParameter('val', $value);
+            ->addSelect()
+            ->from('App:Sortie', 's')
+            ->leftJoin('s.participants', 'u')
+            ->where('s.id = :id')
+            ->setParameter('id', $value);
 
 
 
         $query = $queryBuilder->getQuery();
-        return $query;
+        return $query->getResult();
     }
 }

@@ -43,7 +43,7 @@
     </article>
     <article>
         <!--tableau de recherche -->
-        <table>
+        <table id="tableHome">
             <tr>
                 <td>Nom de la sortie</td>
                 <td>Date de la sortie</td>
@@ -55,17 +55,16 @@
                 <td>Actions</td>
             </tr>
             {% for li in liste %}
-            <tr>
+            <tr id="trHome">
                 <td>{{ li.nom }}</td>
                 <td>{{ li.dateHeureDebut | date("d/m/Y")}}</td>
                 <td>{{ li.dateLimiteInscription|date("d/m/Y") }}</td>
                 <td>{{ li.participants | length }} / {{ li.nbInscriptionMax }}</td>
                 <td>{{ li.etat.libelle }}</td>
-{#                {% for part in li.participants %}#}
-{#                <td>{% if app.user.id is same as(part.id) %}X{% else %}O{% endif %}</td>#}
-                <td id="estInscrit">X</td>
-{#                {% endfor %}#}
-                <td>{{ li.organisateur.nom }}</td>
+
+                <td>{% for part in li.participants %}{% if app.user.id is same as(part.id) %}X{% else %}{% endif %}{% endfor %}</td>
+
+                <td>{{ li.organisateur.pseudo }}</td>
                 <td>
                     <a href="">Afficher</a> - <a href="" id="lienDesister" hidden>Se desister</a>
                     {# trouver une solution pour afficher les bons liens en fonction des prérequis adéquats des désidératas
