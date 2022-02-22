@@ -7,6 +7,7 @@ use App\Form\ProfilType;
 use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -66,6 +67,22 @@ class MainController extends AbstractController
          //photo de profil
          $photoFile = $form->get('photo')->getData();
 
+         if($photoFile){
+             $originalFilename = pathinfo($photoFile->getClientOriginalName(), PATHINFO_FILENAME);
+             $safeFilename = $slugger->slug($originalFilename);
+             $newFilename = $safeFilename.'-'.uniqid().'.'.$photoFile->guessExtension();
+
+             try{
+                 $photoFile->move(
+                     $this->getParameter('photo_directory'),
+                     $newFilename
+                 );
+             }catch (FileException $exception){
+                 throw $this->createNotFoundException('Ya un blem quequepart');
+             }
+
+         }
+        $participant->setPhotoFilename($newFilename);
          $entityManager->persist($participant);
          $entityManager->flush();
          return $this->render("profil.html.twig", [

@@ -8,7 +8,8 @@
     <h2>{{ participant.pseudo }}</h2>
     <br>
     <article class="profil">
-        <img src="" alt="la photo de {{ participant.pseudo }}">
+
+        <img src="{{ asset('uploads/photos/' ~ participant.photoFilename) }}" alt="la photo de {{ participant.pseudo }}">
     <table>
         <tr>
             <td>Prénom:</td>
