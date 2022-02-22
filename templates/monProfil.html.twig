@@ -17,7 +17,9 @@
         {{ form_row(form.telephone) }}
 
         {{ form_row(form.password, {'attr':{'value': ''}}) }}
+        <div id="mailCache">
         {{ form_row(form.email, {'attr':{'class': 'HiddenType'}}) }}
+        </div>
         <label for="pass">Confirmation:</label>
         <input id="pass" type="password">
         {{ form_row(form.campus) }}

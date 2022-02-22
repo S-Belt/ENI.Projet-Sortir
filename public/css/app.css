@@ -120,6 +120,10 @@ select {
     max-width: 50%;
 }
 
+#mailCache{
+    display: none;
+}
+
 /* ===================== Messages d'Erreur ===================== */
 
 /* label {
