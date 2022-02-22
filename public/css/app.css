@@ -60,31 +60,50 @@ footer{
 
 .loginMail{
     display: flex;
-    width: 270px;
+    width: 300px;
     justify-content: space-between;
     margin-top: 50px;
 }
 
 .loginPass{
     display: flex;
-    width: 270px;
+    width: 300px;
     justify-content: space-between;
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
-.login button{
+.loginValider button{
     height: 70px;
-    width: 270px;
+    width: 130px;
     margin-top: 20px;
     background: linear-gradient(75deg, ghostwhite, lightgrey);
     border-radius: 15px;
     border: #999999 solid 2px;
+
 }
-.login button:hover{
+.loginValider button:hover{
     color: ghostwhite;
-    font-size: 1.5em;
+
+    font-size: 1.2em;
     background-color: #999999;
+}
+
+.loginValider{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+
+}
+
+.loginOption{
+    display: flex;
+    flex-direction: column;
+    width: 145px;
+}
+
+.rememberMe{
+    display: flex;
 }
 
 
