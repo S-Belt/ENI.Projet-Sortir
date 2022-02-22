@@ -33,11 +33,11 @@ class SortieFormType extends AbstractType
             ->add('nbInscriptionMax')
             ->add('infosSortie', TextareaType::class)
             ->add('campus', EntityType::class,['class'=>Campus::class,'choice_label'=>'nom',
-                'disabled' => 'disabled'])
+                ])
             ->add('ville', EntityType::class, ['class' => Ville::class, 'choice_label' => 'nom',
                 'mapped' => false])
             ->add('Lieu', EntityType::class, ['class' =>Lieu::class, 'choice_label' => 'nom',
-                'mapped' => false])
+                ])
             ->add('rue', EntityType::class, ['class' => Lieu::class, 'choice_label' => 'rue',
                 'mapped' => false])
             ->add('codePostal', EntityType::class, ['class' => Ville::class, 'choice_label' => 'codePostal',

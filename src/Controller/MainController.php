@@ -8,6 +8,7 @@ use App\Entity\Sortie;
 use App\Form\LieuFormType;
 use App\Form\ProfilType;
 use App\Form\SortieFormType;
+use App\Repository\EtatRepository;
 use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -100,9 +101,12 @@ class MainController extends AbstractController
     /**
      * @Route("creerSortie", name="creerSortie")
      */
-    public function creerSortie(Request $request, EntityManagerInterface $entityManager){
+    public function creerSortie(Request $request, EntityManagerInterface $entityManager, EtatRepository $repository){
         $organisateur = $this->getUser();
         $sortie = new Sortie();
+
+        $etat = $repository->find(1);
+        $sortie->setEtat($etat);
         $sortieForm = $this->createForm(SortieFormType::class, $sortie);
         $sortieForm->handleRequest($request);
 
@@ -110,6 +114,7 @@ class MainController extends AbstractController
 
         if($sortieForm->isSubmitted() && $sortieForm->isValid()){
             $entityManager->persist($sortie);
+
             $entityManager->flush();
             return $this->render('main/home.html.twig');
         }
