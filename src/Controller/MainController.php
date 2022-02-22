@@ -32,6 +32,7 @@ class MainController extends AbstractController
 
 
 
+
         return $this->render("profil.html.twig", [
             'participant' => $participant
         ]);
@@ -51,7 +52,9 @@ class MainController extends AbstractController
      if ( $form->isSubmitted() && $form-> isValid()) {
          $entityManager->persist($participant);
          $entityManager->flush();
-         return $this->render("profil.html.twig");
+         return $this->render("profil.html.twig", [
+             'participant' => $participant
+         ]);
      }
      return $this->render("monProfil.html.twig", ["form"=>$form->createView()]);
 
