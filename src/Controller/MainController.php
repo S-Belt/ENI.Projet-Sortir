@@ -13,6 +13,7 @@ use App\Repository\EtatRepository;
 use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,14 +28,16 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class MainController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("", name="home")
      */
     public function home(CampusRepository $repository, SortieRepository $sortieRepository): Response
     {
-        $organisateur = $this->getUser()->getId();
+
 
         $campus = $repository->findAll();
 
+        //$organisateur = $this->getUser()->getId();
         //$liste = $sortieRepository->liste($organisateur);
         $liste = $sortieRepository->findAll();
 

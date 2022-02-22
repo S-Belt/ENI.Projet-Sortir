@@ -58,7 +58,7 @@ input[type=checkbox]{
     float: left;
 }
 
-#articleRecherche label{
+#articleRecherche{
 
 }
 
@@ -67,6 +67,11 @@ input[type=checkbox]{
 }
 #trHome{
     border: solid black 2px;
+}
+
+#asideHome{
+    float: right;
+    font-weight: bolder;
 }
 /* ===================== Page: Login ===================== */
 
