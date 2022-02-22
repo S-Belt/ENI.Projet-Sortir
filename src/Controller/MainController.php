@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Participant;
+use App\Entity\Sortie;
 use App\Form\ProfilType;
+use App\Form\SortieFormType;
 use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -80,9 +82,9 @@ class MainController extends AbstractController
              }catch (FileException $exception){
                  throw $this->createNotFoundException('Ya un blem quequepart');
              }
-
+             $participant->setPhotoFilename($newFilename);
          }
-        $participant->setPhotoFilename($newFilename);
+
          $entityManager->persist($participant);
          $entityManager->flush();
          return $this->render("profil.html.twig", [
@@ -92,4 +94,17 @@ class MainController extends AbstractController
      return $this->render("monProfil.html.twig", ["form"=>$form->createView()]);
 
     }
+
+    /**
+     * @Route("creerSortie", name="creerSortie")
+     */
+    public function creerSortie(){
+        $sortie = new Sortie();
+        $sortieForm = $this->createForm(SortieFormType::class, $sortie);
+
+        return $this->render('creerSortie.html.twig', [
+            'sortieForm' => $sortieForm->createView()
+        ]);
+    }
+
 }
