@@ -21,6 +21,15 @@ security:
             lazy: true
             provider: app_user_provider
             custom_authenticator: App\Security\AppAuthenticator
+#            remember_me:
+#                secret: '%kernel.secret%'
+#                lifetime: 31536000 # 1 week in seconds
+#                path: /
+#                domain: ~
+#                secure: true
+#                name: REMEMBERME
+#                remember_me_parameter: remember_me
+#                always_remember_me: true
             logout:
                 path: app_logout
                 # where to redirect after logout
