@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/", name="main_")
@@ -44,7 +45,8 @@ class MainController extends AbstractController
      */
     public function monProfil ($id, ParticipantRepository $repository,
                                Request $request, EntityManagerInterface $entityManager,
-                               UserPasswordHasherInterface $userPasswordHasher) {
+                               UserPasswordHasherInterface $userPasswordHasher,
+                               SluggerInterface $slugger) {
      $participant = new Participant();
      $participant = $repository->find($id);
      
@@ -60,6 +62,9 @@ class MainController extends AbstractController
                  $form->get('password')->getData()
              )
          );
+
+         //photo de profil
+         $photoFile = $form->get('photo')->getData();
 
          $entityManager->persist($participant);
          $entityManager->flush();
