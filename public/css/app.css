@@ -14,7 +14,6 @@ body{
 
 nav {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
     height: 70px;
@@ -99,6 +98,7 @@ footer{
     display: flex;
     justify-content: space-between;
     width: 300px;
+    align-items: center;
 
 }
 
@@ -179,3 +179,18 @@ select {
 }
 
 .flash-success {background-color: darkolivegreen}*/
+
+
+/* ===================== Responsive ===================== */
+
+@media only screen and (max-width: 480px) {
+    body{
+        padding: 2%;
+    }
+    nav{
+        margin: 1%;
+        font-size: 0.7em;
+    }
+}
+
+
