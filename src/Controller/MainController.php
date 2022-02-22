@@ -98,9 +98,19 @@ class MainController extends AbstractController
     /**
      * @Route("creerSortie", name="creerSortie")
      */
-    public function creerSortie(){
+    public function creerSortie(Request $request, EntityManagerInterface $entityManager){
+        $organisateur = $this->getUser();
         $sortie = new Sortie();
         $sortieForm = $this->createForm(SortieFormType::class, $sortie);
+        $sortieForm->handleRequest($request);
+
+        $sortie->setOrganisateur($organisateur);
+
+        if($sortieForm->isSubmitted() && $sortieForm->isValid()){
+            $entityManager->persist($sortie);
+            $entityManager->flush();
+            return $this->render('main/home.html.twig');
+        }
 
         return $this->render('creerSortie.html.twig', [
             'sortieForm' => $sortieForm->createView()
