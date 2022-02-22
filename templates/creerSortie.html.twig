@@ -6,8 +6,24 @@
 
 {% block main %}
     {{ form_start(sortieForm) }}
-    {{ form_widget(sortieForm) }}
-    <button>Créer</button>
+    {{ form_row(sortieForm.nom) }}
+    {{ form_row(sortieForm.dateHeureDebut) }}
+    {{ form_row(sortieForm.duree) }}
+    {{ form_row(sortieForm.dateLimiteInscription) }}
+    {{ form_row(sortieForm.nbInscriptionMax) }}
+    {{ form_row(sortieForm.infosSortie) }}
+    {{ form_row(sortieForm.campus) }}
+    {{ form_row(sortieForm.ville) }}
+    {{ form_row(sortieForm.Lieu) }}
+    <a href="{{ path('main_creerLieu') }}">Ajouter un lieu</a>
+    {{ form_row(sortieForm.rue) }}
+    {{ form_row(sortieForm.codePostal) }}
+
+
+    <button>Enregistrer</button>
+    <button>Publier la sortie</button>
+
     {{ form_end(sortieForm) }}
+    <button onclick="{{ path('main_home') }}">Annuler</button>
 {% endblock %}
 

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Lieu;
 use App\Entity\Participant;
 use App\Entity\Sortie;
+use App\Form\LieuFormType;
 use App\Form\ProfilType;
 use App\Form\SortieFormType;
 use App\Repository\ParticipantRepository;
@@ -115,6 +117,26 @@ class MainController extends AbstractController
         return $this->render('creerSortie.html.twig', [
             'sortieForm' => $sortieForm->createView()
         ]);
+    }
+
+    /**
+     * @Route("creerLieu", name="creerLieu")
+     */
+    public function creerLieu(Request $request, EntityManagerInterface $entityManager){
+        $lieu = new Lieu();
+        $sortie = new Sortie();
+        $lieuForm = $this->createForm(LieuFormType::class, $lieu);
+        $sortieForm = $this->createForm(SortieFormType::class, $sortie);
+        $lieuForm->handleRequest($request);
+
+        if($lieuForm->isSubmitted() && $lieuForm->isValid()){
+            $entityManager->persist($lieu);
+            $entityManager->flush();
+            return $this->render("creerSortie.html.twig", [ 'sortieForm' => $sortieForm->createView()]);
+        }
+
+
+        return $this->render("creerLieu.html.twig", [ 'lieuForm' => $lieuForm->createView()]);
     }
 
 }
