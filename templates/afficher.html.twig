@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ sortie.nom }} | {{ parent() }}
+{% endblock %}
+
+{% block main %}
+    <h2>Afficher une sortie</h2>
+    <div>
+    <article id="sortieGauche">
+        <table>
+            <tr>
+                <td>Nom de la sortie: </td>
+                <td>{{ sortie.nom }}</td>
+            </tr>
+            <tr>
+                <td>Date et heure de la sortie: </td>
+                <td>{{ sortie.dateHeureDebut|date("d/m/Y h:m") }}</td>
+            </tr>
+            <tr>
+                <td>Date limite d'inscription: </td>
+                <td>{{ sortie.dateLimiteInscription |date("d/m/Y")}}</td>
+            </tr>
+            <tr>
+                <td>Nombre de places: </td>
+                <td>{{ sortie.nbInscriptionMax }}</td>
+            </tr>
+            <tr>
+                <td>Durée: </td>
+                <td>{{ sortie.duree }} minutes</td>
+            </tr>
+            <tr>
+                <td>Description et infos: </td>
+                <td>{{ sortie.infosSortie }}</td>
+            </tr>
+        </table>
+    </article>
+    <article id="sortieDroite">
+        <table>
+            <tr>
+                <td>Campus: </td>
+                <td>{{ sortie.campus.nom }}</td>
+            </tr>
+            <tr>
+                <td>Lieu: </td>
+                <td>{{ sortie.lieu.nom }}</td>
+            </tr>
+            <tr>
+                <td>Rue: </td>
+                <td>{{ sortie.lieu.rue }}</td>
+            </tr>
+            <tr>
+                <td>Code postal: </td>
+                <td>{{ sortie.lieu.ville.codePostal }}</td>
+            </tr>
+            <tr>
+                <td>Latitude: </td>
+                <td>{{ sortie.lieu.latitude }}</td>
+            </tr>
+            <tr>
+                <td>Longitude: </td>
+                <td>{{ sortie.lieu.longitude }}</td>
+            </tr>
+        </table>
+    </article>
+    </div>
+
+    <article id="sortieParticipants">
+    <h3>Liste des participants inscrits:</h3>
+    <table class="resultat">
+        <thead>
+        <tr>
+            <td>Pseudo</td>
+            <td>Nom</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for participant in sortie.participants %}
+        <tr>
+            <td>{{ participant.pseudo }}</td>
+            <td>{{ participant.prenom }} {{ participant.nom|upper }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </article>
+{% endblock %}
+

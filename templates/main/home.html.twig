@@ -60,7 +60,7 @@
             </tr>
             {% for li in liste %}
             <tr id="trHome">
-                <td>{{ li.nom }}</td>
+                <td><a href="{{ path('main_afficher', {'id': li.id}) }}"> {{ li.nom }}</a></td>
                 <td>{{ li.dateHeureDebut | date("d/m/Y")}}</td>
                 <td>{{ li.dateLimiteInscription|date("d/m/Y") }}</td>
                 <td>{{ li.participants | length }} / {{ li.nbInscriptionMax }}</td>

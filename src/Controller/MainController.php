@@ -161,4 +161,15 @@ class MainController extends AbstractController
         return $this->render("creerLieu.html.twig", [ 'lieuForm' => $lieuForm->createView()]);
     }
 
+    /**
+     * @Route("afficher/{id}", name="afficher")
+     */
+    public function afficher($id, SortieRepository $sortieRepository){
+        $sortie = $sortieRepository->find($id);
+        return $this->render("afficher.html.twig",[
+            'sortie' => $sortie
+        ]);
+
+    }
+
 }

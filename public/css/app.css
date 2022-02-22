@@ -173,7 +173,33 @@ select {
 #mailCache{
     display: none;
 }
+/* ===================== Afficher sortie ===================== */
+#sortieGauche{
+    float: left;
+    padding-left: 10%;
+}
+#sortieDroite{
+    float: right;
+    padding-right: 30%;
+}
 
+#sortieParticipants{
+    float: left;
+    margin-top: 45px;
+}
+
+.resultat tbody tr:nth-child(odd){
+    background-color: lightgray;
+}
+.resultat thead tr{
+    text-align: center;
+    background-color: darkgray;
+    color: darkblue;
+}
+.resultat, .resultat td{
+    border: solid black 2px;
+    border-collapse: collapse;
+}
 /* ===================== Messages d'Erreur ===================== */
 
 /* label {
