@@ -77,10 +77,16 @@ footer{
     height: 70px;
     width: 270px;
     margin-top: 20px;
-    background: linear-gradient(65deg, ghostwhite, lightgrey);
+    background: linear-gradient(75deg, ghostwhite, lightgrey);
     border-radius: 15px;
     border: #999999 solid 2px;
 }
+.login button:hover{
+    color: ghostwhite;
+    font-size: 1.5em;
+    background-color: #999999;
+}
+
 
 /* ===================== Page: Mon Profil ===================== */
 
@@ -88,7 +94,7 @@ footer{
     display: flex;
     flex-direction: column;
     align-self: center;
-    width: 30%;
+    width: 50%;
     justify-content: space-between;
 }
 
@@ -116,8 +122,8 @@ textarea,
 select {
     margin-bottom: 15px;
     box-sizing: border-box;
-    width: 30%;
-    max-width: 50%;
+    width: 60%;
+
 }
 
 #mailCache{
