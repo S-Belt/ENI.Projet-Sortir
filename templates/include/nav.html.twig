@@ -1,15 +1,20 @@
 <nav>
-        <img class = "logo" src="../public/img/exit.jpg" alt = "logo provisoire">
-        <a href="{{ path('main_home') }}">Accueil</a>
-        {% if app.user %}
-        <a href="{{ path('main_creerSortie') }}">Créer une sortie</a>
-        <a href="{{ path('main_monProfil',{"id":app.user.id}) }}">Mon profil</a>
-        <a href="{{ path('app_logout') }}">Se Déconnecter</a>
-{#{% if app.user.role = role-admin %}#}
-        <a href="#">Villes</a>
-        <a href="#">Campus </a>
-   {% else %}
-        <a href="{{ path('app_login') }}">Se connecter</a>
-        <a href="{{ path('app_register') }}">Créer un compte</a>
-        {% endif %}
+        <div class="navLogo">
+                <a href="{{ path('main_home') }}"><img class = "logo" src="../public/img/exit.jpg" alt = "logo provisoire"></a>
+        </div>
+        <div class="navMenu">
+                <a href="{{ path('main_home') }}">Accueil</a>
+                {% if app.user %}
+                        <a href="{{ path('main_creerSortie') }}">Créer une sortie</a>
+                        <a href="{{ path('main_monProfil',{"id":app.user.id}) }}">Mon profil</a>
+                        <a href="{{ path('app_logout') }}">Se Déconnecter</a>
+                        {#{% if app.user.role = role-admin %}#}
+
+                        <a href="#">Villes</a>
+                        <a href="#">Campus </a>
+                 {% else %}
+                        <a href="{{ path('app_login') }}">Se connecter</a>
+                        <a href="{{ path('app_register') }}">Créer un compte</a>
+                {% endif %}
+        </div>
 </nav>
