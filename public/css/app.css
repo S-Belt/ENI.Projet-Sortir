@@ -35,6 +35,10 @@ nav a:hover{
     color: dimgrey;
 }
 
+.logo {
+    float:left;
+}
+
 /* ===================== Page: Main ===================== */
 
 main{
