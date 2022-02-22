@@ -1,23 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% block css %}{% endblock %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+    {#    <script src="https://kit.fontawesome.com/9ac8704e19.js" crossorigin="anonymous"></script>#}
+    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}"> {# normalise.css pour navigateurs #}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> {# on cree .css puis on importe la ref css #}
+
+    <link rel="icon" href="{{ asset('img/go_out.png') }}">
+
     <title>{% block title %}Sortir{% endblock %}</title>
+
+
 </head>
 <body>
     <header>
         {% block header %}{% endblock %}
        {% include ('include/nav.html.twig') %}
+
     </header>
     <main>
         {% block main %}{% endblock %}
     </main>
     <footer>
-        {% block footer %}{% endblock %}
+        {% block footer %}
+
+
+        {% endblock %}
     </footer>
 </body>
 </html>
