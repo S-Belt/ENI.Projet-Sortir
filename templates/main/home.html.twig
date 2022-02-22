@@ -38,11 +38,43 @@
         <input type="checkbox" id="passee" name="passee">
         <label for="passee">Sorties passées</label>
 
-
+        <button onclick="">Rechercher</button>
 
     </article>
     <article>
         <!--tableau de recherche -->
+        <table>
+            <tr>
+                <td>Nom de la sortie</td>
+                <td>Date de la sortie</td>
+                <td>Clôture</td>
+                <td>inscrits/places</td>
+                <td>Etat</td>
+                <td>Inscrit</td>
+                <td>Organisateur</td>
+                <td>Actions</td>
+            </tr>
+            {% for li in liste %}
+            <tr>
+                <td>{{ li.nom }}</td>
+                <td>{{ li.dateHeureDebut | date("d/m/Y")}}</td>
+                <td>{{ li.dateLimiteInscription|date("d/m/Y") }}</td>
+                <td>{{ li.participants | length }} / {{ li.nbInscriptionMax }}</td>
+                <td>{{ li.etat.libelle }}</td>
+{#                {% for part in li.participants %}#}
+{#                <td>{% if app.user.id is same as(part.id) %}X{% else %}O{% endif %}</td>#}
+                <td id="estInscrit">X</td>
+{#                {% endfor %}#}
+                <td>{{ li.organisateur.nom }}</td>
+                <td>
+                    <a href="">Afficher</a> - <a href="" id="lienDesister" hidden>Se desister</a>
+                    {# trouver une solution pour afficher les bons liens en fonction des prérequis adéquats des désidératas
+                    qui incombent aux sens présents#}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button onclick="window.location.href = '{{ path('main_creerSortie') }}'">Créer une sortie</button>
     </article>
 
 {% endblock %}

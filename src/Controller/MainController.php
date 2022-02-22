@@ -11,6 +11,7 @@ use App\Form\SortieFormType;
 use App\Repository\CampusRepository;
 use App\Repository\EtatRepository;
 use App\Repository\ParticipantRepository;
+use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -28,12 +29,19 @@ class MainController extends AbstractController
     /**
      * @Route("", name="home")
      */
-    public function home(CampusRepository $repository): Response
+    public function home(CampusRepository $repository, SortieRepository $sortieRepository): Response
     {
+        $organisateur = $this->getUser()->getNom();
+
         $campus = $repository->findAll();
+        //$liste = $sortieRepository->liste($organisateur);
+        $listes = $sortieRepository->findAll();
+
+
 
         return $this->render('main/home.html.twig', [
-            'campus' => $campus
+            'campus' => $campus,
+            'liste' => $listes
         ]);
     }
 
@@ -121,7 +129,7 @@ class MainController extends AbstractController
             $entityManager->persist($sortie);
 
             $entityManager->flush();
-            return $this->render('main/home.html.twig');
+            return $this->redirectToRoute('main_home');
         }
 
         return $this->render('creerSortie.html.twig', [

@@ -47,13 +47,18 @@ class SortieRepository extends ServiceEntityRepository
         ;
     }
     */
-    public function chercherParNom($value): ?Sortie
+    public function liste($value)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.nom like :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-            ;
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder
+            ->andWhere('s.organisateur = :val')
+            ->andWhere('s.participants = :val')
+            ->andWhere('s.participants != :val')
+            ->setParameter('val', $value);
+
+
+
+        $query = $queryBuilder->getQuery();
+        return $query;
     }
 }
