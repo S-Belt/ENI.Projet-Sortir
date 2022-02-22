@@ -6,6 +6,7 @@ use App\Entity\Campus;
 use App\Entity\Participant;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,7 +20,7 @@ class ProfilType extends AbstractType
             ->add('nom')
             ->add('telephone')
             ->add('email')
-            ->add('password')
+            ->add('password', PasswordType::class)
             ->add('campus', EntityType::class,['class'=>Campus::class,'choice_label'=>'nom'])
         ;
     }
