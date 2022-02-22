@@ -8,6 +8,7 @@ use App\Entity\Sortie;
 use App\Form\LieuFormType;
 use App\Form\ProfilType;
 use App\Form\SortieFormType;
+use App\Repository\CampusRepository;
 use App\Repository\EtatRepository;
 use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -27,9 +28,13 @@ class MainController extends AbstractController
     /**
      * @Route("", name="home")
      */
-    public function home(): Response
+    public function home(CampusRepository $repository): Response
     {
-        return $this->render('main/home.html.twig');
+        $campus = $repository->findAll();
+
+        return $this->render('main/home.html.twig', [
+            'campus' => $campus
+        ]);
     }
 
     /**

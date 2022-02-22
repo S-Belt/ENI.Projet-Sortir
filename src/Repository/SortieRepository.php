@@ -47,4 +47,13 @@ class SortieRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function chercherParNom($value): ?Sortie
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.nom like :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
 }
