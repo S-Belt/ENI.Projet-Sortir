@@ -11,49 +11,57 @@
         <p>Date du jour: {{ "now"|date("d/m/Y") }}</p>
         <p>Participant: {{ app.user.prenom }} {{ app.user.nom[:1]|upper }}.</p>
     </aside>
-    <article id="articleRecherche">
+
         <h3>Filtrer les sorties</h3>
-        <form method="post" action="{{ path('sortie_recherche') }}">
-        <label for="selectCampus">Campus</label>
-        <select name="selectCampus" id="selectCampus">
-            {% for campu in campus %}
-            <option value="{{ campu.id }}">{{ campu.nom }}</option>
-            {% endfor %}
-        </select>
-            <label for="contient">Le nom de la sortie contient:</label>
-            <input type="text" name="contient" id="contient">
-            <label for="entreA">Entre </label>
-            <input type="date" name="entreA" id="entreA">
-            <label for="entreB"> Et </label>
-            <input type="date" name="entreB" id="entreB">
-
-
-        <input type="checkbox" id="organise" name="organise"
-               checked>
-        <label for="organise">Sorties dont je suis l'organisateur/trice</label>
-
-        <input type="checkbox" id="inscrit" name="inscrit"
-               checked>
-        <label for="inscrit">Sorties auxquelles je suis inscrit/e</label>
-
-        <input type="checkbox" id="nonInscrit" name="nonInscrit"
-               checked>
-        <label for="nonInscrit">Sorties auxquelles je ne suis pas inscrit/e</label>
-
-        <input type="checkbox" id="passee" name="passee">
-        <label for="passee">Sorties passées</label>
-
-        <button >Rechercher</button>
-        </form>
+    <form method="post" action="{{path('sortie_recherche')}}">
+        <article id="articleRecherche">
+            <div id="searchSorties">
+                <div id="choixRecherche">
+                    <label for="selectCampus">Campus</label>
+                    <select name="selectCampus" id="selectCampus">
+                        {% for campu in campus %}
+                        <option value="{{ campu.id }}">{{ campu.nom }}</option>
+                        {% endfor %}
+                    </select>
+                        <label for="contient">Le nom de la sortie contient:</label>
+                        <input type="search" name="contient" id="contient">
+                        <label for="entreA">Entre </label>
+                        <input type="date" name="entreA" id="entreA">
+                        <label for="entreB"> Et </label>
+                        <input type="date" name="entreB" id="entreB">
+                </div>
+                <div id="choixFiltres">
+                    <div>
+                    <input type="checkbox" id="organise" name="organise" checked>
+                    <label for="organise">Sorties dont je suis l'organisateur/trice</label>
+                    </div>
+                    <div>
+                    <input type="checkbox" id="inscrit" name="inscrit" checked>
+                    <label for="inscrit">Sorties auxquelles je suis inscrit/e</label>
+                    </div>
+                    <div>
+                    <input type="checkbox" id="nonInscrit" name="nonInscrit" checked>
+                    <label for="nonInscrit">Sorties auxquelles je ne suis pas inscrit/e</label>
+                    </div>
+                    <div>
+                    <input type="checkbox" id="passee" name="passee">
+                    <label for="passee">Sorties passées</label>
+                    </div>
+                </div>
+                <div>
+                    <button>Rechercher</button>
+                </div>
+            </form>
     </article>
+
     <article>
         <!--tableau de recherche -->
         <table id="tableHome">
-            <tr>
+            <tr id="trTitres">
                 <td>Nom de la sortie</td>
                 <td>Date de la sortie</td>
                 <td>Clôture</td>
-                <td>inscrits/places</td>
+                <td>Inscrits / Places</td>
                 <td>Etat</td>
                 <td>Inscrit</td>
                 <td>Organisateur</td>

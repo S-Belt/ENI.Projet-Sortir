@@ -173,7 +173,9 @@ select {
 #mailCache{
     display: none;
 }
+
 /* ===================== Afficher sortie ===================== */
+
 #sortieGauche{
     float: left;
     padding-left: 10%;
@@ -200,6 +202,54 @@ select {
     border: solid black 2px;
     border-collapse: collapse;
 }
+
+#tableHome{
+    width: 100%;
+    font-size: small;
+}
+#tableHome tbody tr:nth-child(odd){
+    background-color: lightgray;
+}
+
+#trTitres{
+    text-align: center;
+    font-family: "Times New Roman", sans-serif;
+    font-weight: bold;
+}
+
+
+
+/* ===================== Filtres de sorties ===================== */
+
+#articleRecherche{
+    font-size: small;
+    display: flex;
+    width: 100%;
+}
+#searchSorties{
+    display: flex;
+    align-items: flex-end;
+    width: 90%;
+}
+#choixRecherche{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+#choixFiltres{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+#choixFiltres div{
+    display: flex;
+}
+
+
+
+
+
+
 /* ===================== Messages d'Erreur ===================== */
 
 /* label {
