@@ -17,19 +17,27 @@ class SortieController extends AbstractController
     {
         $sortie= $sortieRepository->find($id);
         $participant= $this->getUser();
-        $sortie->addParticipant($participant);
 
 
+        if ($sortie->getParticipants()->count()<$sortie->getNbInscriptionMax()) {
 
-        $entityManager->persist($sortie);
-        $entityManager->flush();
+            if ($sortie->getEtat() === 'Ouverte') {
 
+                $sortie->addParticipant($participant);
+                $entityManager->persist($sortie);
+                $entityManager->flush();
+                $this->addFlash('alert', 'Vous etes bien inscrit a cette sortie');
 
+            } else {
+
+                $this->addFlash('alert', 'Sorry, on peut plus s\'inscrire a cette sortie');
+
+            }
+        }else {
+                $this->addFlash('alert', 'Sorry, il n\'y a plus de place disponible pour cette sortie');
+            }
 
         return $this->redirectToRoute('main_afficher',['id'=>$sortie->getId()]);
     }
-
-
-
 
 }
