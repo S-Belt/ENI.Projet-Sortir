@@ -130,15 +130,16 @@ class MainController extends AbstractController
 
 
         $sortieForm = $this->createForm(SortieFormType::class, $sortie);
-        $sortieForm->add('Enregistrer', SubmitType::class);
-        $sortieForm->add('Publier', SubmitType::class);
+
 
         $sortieForm->handleRequest($request);
 
         $sortie->setOrganisateur($organisateur);
 
         if($sortieForm->isSubmitted() && $sortieForm->isValid()){
-            if($sortieForm->get('Enregistrer') == null){
+            $bouton = $request->request->get('bouton');
+
+            if($bouton === 'Enregistrer'){
                 $sortie->setEtat($etatCree);
             }else{
                 $sortie->setEtat($etatOuverte);
