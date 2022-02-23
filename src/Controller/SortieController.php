@@ -42,6 +42,23 @@ class SortieController extends AbstractController
 
         return $this->redirectToRoute('main_afficher',['id'=>$sortie->getId()]);
     }
+    /**
+     * @Route ("/sortie/seDesister/{id}", name="sortie_seDesister")
+     */
+
+    public function seDesister(int $id, SortieRepository $sortieRepository, EntityManagerInterface $entityManager) {
+
+        $sortie= $sortieRepository->find($id);
+        $participant= $this->getUser();
+
+        $sortie->removeParticipant($participant);
+        $entityManager->persist($sortie);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('main_afficher',['id'=>$sortie->getId()]);
+
+    }
+
 
     /**
      * @Route ("/sortie/etat", name="sortie_etat")
