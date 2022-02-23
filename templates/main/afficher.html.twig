@@ -84,11 +84,17 @@
         </tbody>
     </table>
         <div>
-        <button onclick="window.location.href='{{ path('sortie_sinscrire', {'id':sortie.id}) }}'"> S'inscrire</button>
+            {% if app.user.pseudo is same as(sortie.organisateur.pseudo) %}
+                <button onclick=""> Annuler la sortie</button>
+            {% else %}
+
+
+
             <button onclick="window.location.href='{{ path('sortie_seDesister', {'id':sortie.id}) }}'"> Se désister </button>
-            {% if app.user.pseudo is same as(sortie.organisateur) %}
-                <button onclick=""> Annuler</button>
-                {% else %}
+
+              <button onclick="window.location.href='{{ path('sortie_sinscrire', {'id':sortie.id}) }}'"> S'inscrire</button>
+
+
 
             {%  endif%}
 
