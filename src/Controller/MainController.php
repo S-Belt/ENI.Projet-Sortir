@@ -41,12 +41,14 @@ class MainController extends AbstractController
         //$liste = $sortieRepository->liste($organisateur);
         $liste = $sortieRepository->findAll();
 
+//        $this->forward(SortieController::class,);
 
 
         return $this->render('main/home.html.twig', [
             'campus' => $campus,
             'liste' => $liste
         ]);
+
     }
 
     /**
