@@ -6,7 +6,7 @@
                 <a href="{{ path('main_home') }}">Accueil</a>
                 {% if app.user %}
                         <a href="{{ path('main_creerSortie') }}">Créer une sortie</a>
-                        <a href="{{ path('main_monProfil',{"id":app.user.id}) }}">Mon profil</a>
+                        <a href="{{ path('main_profil',{"id":app.user.id}) }}">Mon profil</a>
                         <a href="{{ path('app_logout') }}">Se Déconnecter</a>
                         {#{% if app.user.role = role-admin %}#}
 
