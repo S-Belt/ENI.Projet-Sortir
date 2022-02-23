@@ -23,7 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
- * @Route("main/", name="main_")
+ * @Route("/", name="main_")
  */
 class MainController extends AbstractController
 {
