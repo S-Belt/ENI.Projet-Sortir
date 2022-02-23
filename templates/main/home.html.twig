@@ -13,6 +13,7 @@
     </aside>
     <article id="articleRecherche">
         <h3>Filtrer les sorties</h3>
+        <form method="post" action="{{ path('sortie_recherche') }}">
         <label for="selectCampus">Campus</label>
         <select name="selectCampus" id="selectCampus">
             {% for campu in campus %}
@@ -42,8 +43,8 @@
         <input type="checkbox" id="passee" name="passee">
         <label for="passee">Sorties passées</label>
 
-        <button onclick="">Rechercher</button>
-
+        <button >Rechercher</button>
+        </form>
     </article>
     <article>
         <!--tableau de recherche -->

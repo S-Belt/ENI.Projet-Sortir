@@ -62,4 +62,37 @@ class SortieRepository extends ServiceEntityRepository
         $query = $queryBuilder->getQuery();
         return $query->getResult();
     }
+
+
+
+    public function recherche($campus = null, $contient = null, $dateDebut = null, $dateFin = null,
+                                $organise = null, $inscrit = null, $nonInscrit = null,
+                                    $passee = null){
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder->andWhere('s.campus = :campus')
+                    ->setParameter(':campus', $campus);
+        if($contient){
+            $queryBuilder->andWhere($queryBuilder->expr()->like('s.nom', ':contient'))
+                ->setParameter(':contient', $contient);
+        }
+        if($dateDebut){
+            $queryBuilder->andWhere('s.dateHeureDebut >= :dateDebut')
+                            ->setParameter(':dateDebut', $dateDebut);
+        }
+        if($dateFin){
+            $queryBuilder->andWhere('s.dateHeureDebut <= :dateFin')
+                ->setParameter(':dateFin', $dateFin);
+        }
+        if($organise){
+            $queryBuilder->andWhere('s.organisateur = :organise')
+                            ->setParameter(':organise', $organise);
+        }
+        if($inscrit){
+            $queryBuilder->andWhere(':inscrit MEMBER OF s.participants')
+                            ->setParameter(':inscrit', $inscrit);
+        }
+        //manque nonInscrit et passée
+        $query = $queryBuilder->getQuery();
+        return $query->getResult();
+    }
 }

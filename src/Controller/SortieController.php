@@ -7,6 +7,7 @@ use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -100,6 +101,46 @@ class SortieController extends AbstractController
         }
         $entityManager->flush();
         return $this->redirectToRoute('main_home');
+    }
+
+    /**
+     * @Route("sortie/recherche", name="sortie_recherche")
+     */
+    public function recherche(SortieRepository $sortieRepository, Request $request){
+        $campus = $sortieRepository->findAll();
+
+
+        $campus = $_POST['selectCampus'];
+        $nomContient = $_POST['contient'];
+        $dateDebut = $_POST['entreA'];
+        $dateFin = $_POST['entreB'];
+
+        $organise = null;
+        $inscrit = null;
+        $nonInscrit = null;
+        $passee = null;
+
+        if(isset($_POST['organise'])){
+            $organise = true;
+        }
+        //doit etre le pseudo du connecté
+        if(isset($_POST['inscrit'])){
+            $inscrit = true;
+        }
+        if(isset($_POST['nonInscrit'])){
+            $nonInscrit = true;
+        }
+        if(isset($_POST['passee'])){
+            $passee = true;
+        }
+
+        $resultats = $sortieRepository->recherche($campus, $nomContient, $dateDebut, $dateFin
+                                                    ,$organise, $inscrit, $nonInscrit, $passee);
+
+        return $this->render('main/home.html.twig', [
+            'liste' => $resultats,
+            'campus' => $campus
+        ]);
     }
 
 }
