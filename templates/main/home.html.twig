@@ -48,12 +48,12 @@
                     <label for="passee">Sorties passées</label>
                     </div>
                 </div>
-                <div>
+                <div id="buttonRecherche">
                     <button>Rechercher</button>
                 </div>
-            </form>
+            </div>
     </article>
-
+    </form>
     <article>
         <!--tableau de recherche -->
         <table id="tableHome">
@@ -86,7 +86,9 @@
             </tr>
             {% endfor %}
         </table>
-        <button onclick="window.location.href = '{{ path('main_creerSortie') }}'">Créer une sortie</button>
+        <div id="createSortie">
+        <button id="buttonCreate" onclick="window.location.href = '{{ path('main_creerSortie') }}'">Créer une sortie</button>
+        </div>
     </article>
 
 {% endblock %}

@@ -1,3 +1,74 @@
+/* ===================== Valeurs par defaut ===================== */
+
+input{
+    border-radius: 15px;
+    border: #999999 solid 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+input:hover{
+    color: forestgreen;
+    border-color: forestgreen;
+}
+
+label{
+    margin-left: 10px;
+    margin-bottom: 5px;
+    color: forestgreen;
+    font-weight: bold;
+}
+
+select{
+    border-radius: 15px;
+    border: #999999 solid 2px;
+    padding-left: 10px;
+}
+
+select:hover{
+    color: forestgreen;
+    border-color: forestgreen;
+}
+textarea{
+    border-radius: 15px;
+    border: #999999 solid 2px;
+    padding-left: 10px;
+}
+
+textarea:hover{
+    color: forestgreen;
+    border-color: forestgreen;
+}
+
+
+
+/* ===================== Messages d'Erreur ===================== */
+
+/* label {
+    display: block;
+}
+
+input,
+textarea,
+select {
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    width: 150px;
+    max-width: 50%;
+}
+
+.flash {
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+}
+
+.flash-success {background-color: darkolivegreen}*/
+
+
+/* ===================== Body ===================== */
 
 body{
     font-family: 'Playfair Display', sans-serif;
@@ -32,7 +103,7 @@ nav a{
 }
 
 nav a:hover{
-    color: dimgrey;
+    color: forestgreen;
 }
 
 .logo {
@@ -58,10 +129,6 @@ input[type=checkbox]{
     float: left;
 }
 
-#articleRecherche{
-
-}
-
 #tableHome{
     border: solid black 2px;
 }
@@ -72,7 +139,13 @@ input[type=checkbox]{
 #asideHome{
     float: right;
     font-weight: bolder;
+    color: forestgreen;
 }
+
+.check-with-label:checked + .label-for-check {
+    font-weight: bold;
+}
+
 /* ===================== Page: Login ===================== */
 
 .login{
@@ -107,8 +180,7 @@ input[type=checkbox]{
 
 }
 .loginValider button:hover{
-    color: ghostwhite;
-
+    color: forestgreen;
     font-size: 1.2em;
     background-color: #999999;
 }
@@ -206,74 +278,130 @@ select {
 #tableHome{
     width: 100%;
     font-size: small;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 #tableHome tbody tr:nth-child(odd){
-    background-color: lightgray;
+    background-color: rgba(34,139,34, 0.5);
 }
 
 #trTitres{
     text-align: center;
     font-family: "Times New Roman", sans-serif;
     font-weight: bold;
+    background-color: forestgreen;
 }
-
-
 
 /* ===================== Filtres de sorties ===================== */
 
 #articleRecherche{
-    font-size: small;
     display: flex;
     width: 100%;
 }
 #searchSorties{
     display: flex;
+    justify-content: space-between;
     align-items: flex-end;
-    width: 90%;
+    width: 100%;
 }
+
 #choixRecherche{
     display: flex;
     flex-direction: column;
     width: 45%;
 }
+
+#choixRecherche input{
+    width: 90%;
+    border-radius: 15px;
+    border: #999999 solid 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#choixRecherche input:hover{
+    color: forestgreen;
+    border-color: forestgreen;
+}
+
+#choixRecherche label{
+    margin-left: 10px;
+    margin-bottom: 5px;
+    color: forestgreen;
+    font-weight: bold;
+}
+
+#choixRecherche select{
+    width: 90%;
+    border-radius: 15px;
+    border: #999999 solid 2px;
+    padding-left: 10px;
+}
+
+#choixRecherche select:hover{
+    color: forestgreen;
+    border-color: forestgreen;
+}
+
 #choixFiltres{
     display: flex;
     flex-direction: column;
     width: 45%;
 }
+#choixFiltres label{
+    color: black;
+}
+
+#choixFiltres input:checked + label{
+    color: forestgreen;
+}
+
 #choixFiltres div{
     display: flex;
 }
 
-
-
-
-
-
-/* ===================== Messages d'Erreur ===================== */
-
-/* label {
-    display: block;
+#choixFiltres input{
+    width: 10%;
 }
 
-input,
-textarea,
-select {
-    margin-bottom: 1rem;
-    box-sizing: border-box;
+#choixFiltres label{
+    font-size: 0.7rem;
+    width: 85%;
+}
+
+#buttonRecherche{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 20%;
+    height: 120px;
+}
+
+#buttonRecherche button{
+    width: 100px;
+    height: 50px;
+    background: linear-gradient(75deg, ghostwhite, lightgrey);
+    border-radius: 15px;
+    border: #999999 solid 2px;
+}
+#buttonRecherche button:hover{
+    color: forestgreen;
+    border-color: forestgreen;
+}
+
+#buttonCreate{
     width: 150px;
-    max-width: 50%;
+    height: 50px;
+    background: linear-gradient(75deg, ghostwhite, lightgrey);
+    border-radius: 15px;
+    border: #999999 solid 2px;
+    margin-top: 5px;
+}
+#buttonCreate:hover{
+    color: forestgreen;
+    border-color: forestgreen;
 }
 
-.flash {
-    padding: 20px;
-    font-weight: bold;
-    font-size: 1.4rem;
-    margin: 1rem 0;
-    border-radius: 5px;
-}
-
-.flash-success {background-color: darkolivegreen}*/
 
 
 /* ===================== Responsive ===================== */
