@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,5 +40,47 @@ class SortieController extends AbstractController
 
         return $this->redirectToRoute('main_afficher',['id'=>$sortie->getId()]);
     }
+
+    /**
+     * @Route ("/sortie/etat", name="sortie_etat")
+     */
+
+    public function etat(SortieRepository $sortieRepository, EtatRepository $etatRepository){
+
+        $sorties= $sortieRepository->findAll();
+        $etats= $etatRepository->findAll();
+        $dateActuelle= new \DateTime();
+
+
+        foreach ($sorties as $sortie){
+
+            $dateDeFin=$sortie->(getDateHeureDebut() + );
+
+            if ($sortie->getParticipants()->count()===$sortie->getNbInscriptionMax()){
+                $sortie->setEtat($etats[2]);
+            }
+            if($sortie->getDateHeureDebut()>=$dateActuelle){
+
+                $sortie->setEtat($etats[3]);
+            }
+            if($sortie->getDateLimiteInscription()>=$dateActuelle){
+
+                $sortie->setEtat($etats[2]);
+            }
+            if(){
+
+            }
+
+                
+            
+            
+            
+        }
+
+
+
+
+    }
+
 
 }
