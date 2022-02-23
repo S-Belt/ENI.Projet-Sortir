@@ -71,8 +71,12 @@ class SortieRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('s');
         $queryBuilder->andWhere('s.campus = :campus')
                     ->setParameter(':campus', $campus);
-        if($contient){
+        /*if($contient){
             $queryBuilder->andWhere($queryBuilder->expr()->like('s.nom', ':contient'))
+                ->setParameter(':contient', $contient);
+        }*/
+        if($contient){
+            $queryBuilder->andWhere('s.nom LIKE :contient')
                 ->setParameter(':contient', $contient);
         }
         if($dateDebut){
