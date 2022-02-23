@@ -24,7 +24,7 @@ class SortieController extends AbstractController
 
         if ($sortie->getParticipants()->count()<$sortie->getNbInscriptionMax()) {
 
-            if ($sortie->getEtat() === 'Ouverte') {
+            if ($sortie->getEtat()->getLibelle() === 'Ouverte') {
 
                 $sortie->addParticipant($participant);
                 $entityManager->persist($sortie);
