@@ -15,6 +15,7 @@ use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -124,16 +125,26 @@ class MainController extends AbstractController
         $organisateur = $this->getUser();
         $sortie = new Sortie();
 
-        $etat = $repository->find(1);
-        $sortie->setEtat($etat);
+        $etatCree = $repository->find(1);
+        $etatOuverte = $repository->find(2);
+
+
         $sortieForm = $this->createForm(SortieFormType::class, $sortie);
+        $sortieForm->add('Enregistrer', SubmitType::class);
+        $sortieForm->add('Publier', SubmitType::class);
+
         $sortieForm->handleRequest($request);
 
         $sortie->setOrganisateur($organisateur);
 
         if($sortieForm->isSubmitted() && $sortieForm->isValid()){
-            $entityManager->persist($sortie);
+            if($sortieForm->get('Enregistrer') == null){
+                $sortie->setEtat($etatCree);
+            }else{
+                $sortie->setEtat($etatOuverte);
+            }
 
+            $entityManager->persist($sortie);
             $entityManager->flush();
             return $this->redirectToRoute('main_home');
         }
