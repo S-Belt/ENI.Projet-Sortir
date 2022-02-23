@@ -23,12 +23,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
+ * @IsGranted("ROLE_USER")
  * @Route("/", name="main_")
  */
 class MainController extends AbstractController
 {
     /**
-     * @IsGranted("ROLE_USER")
      * @Route("", name="home")
      */
     public function home(CampusRepository $repository, SortieRepository $sortieRepository): Response
