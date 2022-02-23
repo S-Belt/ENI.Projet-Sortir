@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class SortieController extends AbstractController
 {
@@ -54,7 +55,14 @@ class SortieController extends AbstractController
 
         foreach ($sorties as $sortie){
 
-            $dateDeFin=$sortie->(getDateHeureDebut() + );
+//            $dateDeFin=$sortie->getDateHeureDebut() + );
+//            $duree = $sortie ->getDuree();
+//            $debut = $sortie ->getDateHeureDebut();
+//            date('Y-m-d H:i',strtotime($debut,$duree));
+//            $interval = new \DateInterval('PT4H');
+//            Datetime::add($debut);
+
+
 
             if ($sortie->getParticipants()->count()===$sortie->getNbInscriptionMax()){
                 $sortie->setEtat($etats[2]);
@@ -67,20 +75,9 @@ class SortieController extends AbstractController
 
                 $sortie->setEtat($etats[2]);
             }
-            if(){
 
-            }
-
-                
-            
-            
-            
         }
 
-
-
-
     }
-
 
 }
