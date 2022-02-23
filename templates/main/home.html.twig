@@ -60,7 +60,7 @@
             </tr>
             {% for li in liste %}
             <tr id="trHome">
-                <td><a href="{{ path('main_afficher', {'id': li.id}) }}"> {{ li.nom }}</a></td>
+                <td>{{ li.nom }} </td>
                 <td>{{ li.dateHeureDebut | date("d/m/Y")}}</td>
                 <td>{{ li.dateLimiteInscription|date("d/m/Y") }}</td>
                 <td>{{ li.participants | length }} / {{ li.nbInscriptionMax }}</td>
@@ -70,7 +70,7 @@
 
                 <td><a href="{{ path('main_profil', {'id': li.organisateur.id}) }}"> {{ li.organisateur.pseudo }} </a></td>
                 <td>
-                    <a href="">Afficher</a>  <a href="" id="lienDesister" hidden>Se desister</a>
+                    <a href="{{ path('main_afficher', {'id': li.id}) }}"> Afficher</a>  <a href="" id="lienDesister" hidden>Se desister</a>
                     {# trouver une solution pour afficher les bons liens en fonction des prérequis adéquats des désidératas
                     qui incombent aux sens présents#}
                 </td>
