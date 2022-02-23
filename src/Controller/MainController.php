@@ -23,7 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
- * @Route("/", name="main_")
+ * @Route("main/", name="main_")
  */
 class MainController extends AbstractController
 {
@@ -58,7 +58,7 @@ class MainController extends AbstractController
 
 
 
-        return $this->render("profil.html.twig", [
+        return $this->render("main/profil.html.twig", [
             'participant' => $participant
         ]);
     }
@@ -107,11 +107,11 @@ class MainController extends AbstractController
 
          $entityManager->persist($participant);
          $entityManager->flush();
-         return $this->render("profil.html.twig", [
+         return $this->render("main/profil.html.twig", [
              'participant' => $participant
          ]);
      }
-     return $this->render("monProfil.html.twig", ["form"=>$form->createView()]);
+     return $this->render("main/monProfil.html.twig", ["form"=>$form->createView()]);
 
     }
 
@@ -136,7 +136,7 @@ class MainController extends AbstractController
             return $this->redirectToRoute('main_home');
         }
 
-        return $this->render('creerSortie.html.twig', [
+        return $this->render('main/creerSortie.html.twig', [
             'sortieForm' => $sortieForm->createView()
         ]);
     }
@@ -154,11 +154,11 @@ class MainController extends AbstractController
         if($lieuForm->isSubmitted() && $lieuForm->isValid()){
             $entityManager->persist($lieu);
             $entityManager->flush();
-            return $this->render("creerSortie.html.twig", [ 'sortieForm' => $sortieForm->createView()]);
+            return $this->render("main/creerSortie.html.twig", [ 'sortieForm' => $sortieForm->createView()]);
         }
 
 
-        return $this->render("creerLieu.html.twig", [ 'lieuForm' => $lieuForm->createView()]);
+        return $this->render("main/creerLieu.html.twig", [ 'lieuForm' => $lieuForm->createView()]);
     }
 
     /**
@@ -166,7 +166,7 @@ class MainController extends AbstractController
      */
     public function afficher($id, SortieRepository $sortieRepository){
         $sortie = $sortieRepository->find($id);
-        return $this->render("afficher.html.twig",[
+        return $this->render("main/afficher.html.twig",[
             'sortie' => $sortie
         ]);
 
