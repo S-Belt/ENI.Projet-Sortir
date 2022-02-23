@@ -83,6 +83,13 @@
         {% endfor %}
         </tbody>
     </table>
+        <div>
+            {% if app.user.pseudo is same as(sortie.organisateur) %}
+                <button onclick=""> Annuler</button>
+                {% else %}
+                <button onclick=""> S'inscrire</button>
+            {%  endif%}
+        </div>
     </article>
 {% endblock %}
 
