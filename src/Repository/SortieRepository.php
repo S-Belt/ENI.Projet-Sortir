@@ -77,7 +77,7 @@ class SortieRepository extends ServiceEntityRepository
         }*/
         if($contient){
             $queryBuilder->andWhere('s.nom LIKE :contient')
-                ->setParameter(':contient', $contient);
+                ->setParameter(':contient', '%'.$contient.'%');
         }
         if($dateDebut){
             $queryBuilder->andWhere('s.dateHeureDebut >= :dateDebut')
