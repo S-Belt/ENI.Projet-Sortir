@@ -12,6 +12,7 @@ use App\Repository\CampusRepository;
 use App\Repository\EtatRepository;
 use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
+use App\Service\EtatService;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,25 +33,29 @@ class MainController extends AbstractController
     /**
      * @Route("", name="home")
      */
-    public function home(CampusRepository $repository, SortieRepository $sortieRepository): Response
+    public function home(CampusRepository $repository, SortieRepository $sortieRepository, EtatService $service): Response
     {
+
+        $liste = $service->etat();
 
 
         $campus = $repository->findAll();
-
-        //$organisateur = $this->getUser()->getId();
         //$liste = $sortieRepository->liste($organisateur);
-        $liste = $sortieRepository->findAll();
 
-//        $this->forward(SortieController::class,);
+        //test. Le service recupere deja la liste.
+        //$liste = $sortieRepository->findAll();
+
 
 
         return $this->render('main/home.html.twig', [
             'campus' => $campus,
             'liste' => $liste
         ]);
-
     }
+
+
+
+
 
     /**
      * @Route("profil/{id}", name="profil")
