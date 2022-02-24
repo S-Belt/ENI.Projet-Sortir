@@ -91,6 +91,18 @@ class SortieRepository extends ServiceEntityRepository
             $queryBuilder->andWhere(':inscrit MEMBER OF s.participants')
                             ->setParameter(':inscrit', $inscrit);
         }
+        if($nonInscrit){
+            $queryBuilder->andWhere(':nonInscrit NOT MEMBER OF s.participants')
+                            ->setParameter(':nonInscrit', $nonInscrit);
+        }
+        if($passee){
+            $queryBuilder->andWhere('s.dateHeureDebut < :passee')
+                            ->setParameter(':passee', $passee);
+        }
+
+
+
+
         //manque nonInscrit et passée
         $query = $queryBuilder->getQuery();
         return $query->getResult();

@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 class SortieController extends AbstractController
@@ -83,15 +84,15 @@ class SortieController extends AbstractController
         if(isset($_POST['organise'])){
             $organise = $this->getUser();
         }
-        //doit etre le pseudo du connecté
         if(isset($_POST['inscrit'])){
             $inscrit = $this->getUser();
         }
         if(isset($_POST['nonInscrit'])){
-            $nonInscrit = $this->getUser()->getPseudo();
+            $nonInscrit = $this->getUser();
         }
         if(isset($_POST['passee'])){
-            $passee = true;
+            $demain = date_modify(new \DateTime(), '+1 day');
+            $passee = $demain;
         }
 
         $resultats = $sortieRepository->recherche($campus, $nomContient, $dateDebut, $dateFin
