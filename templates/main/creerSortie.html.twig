@@ -21,11 +21,12 @@
     {{ form_row(sortieForm.rue) }}
     {{ form_row(sortieForm.codePostal) }}
 
-
-    <button name="bouton" value="Enregistrer">Enregistrer</button>
-    <button name="bouton" value="Publier">Publier la sortie</button>
-
+    <div id="creationBoutons">
+        <button name="bouton" value="Enregistrer">Enregistrer</button>
+        <button name="bouton" value="Publier">Publier la sortie</button>
+        <button id="btnAnnuler" onclick="{{ path('main_home') }}">Annuler</button>
+    </div>
     {{ form_end(sortieForm) }}
-    <button onclick="{{ path('main_home') }}">Annuler</button>
+
 {% endblock %}
 

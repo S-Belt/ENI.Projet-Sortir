@@ -40,6 +40,19 @@ textarea:hover{
     border-color: forestgreen;
 }
 
+button{
+    width: 100px;
+    height: 50px;
+    background: linear-gradient(75deg, ghostwhite, lightgrey);
+    border-radius: 15px;
+    border: #999999 solid 2px;
+}
+
+button:hover{
+    color: forestgreen;
+    border-color: forestgreen;
+}
+
 
 
 /* ===================== Messages d'Erreur ===================== */
@@ -170,38 +183,60 @@ input[type=checkbox]{
     margin-bottom: 15px;
 }
 
-.loginValider button{
+#loginValider button{
     height: 70px;
     width: 130px;
-    margin-top: 20px;
+    margin-top: 15px;
     background: linear-gradient(75deg, ghostwhite, lightgrey);
     border-radius: 15px;
     border: #999999 solid 2px;
 
 }
-.loginValider button:hover{
+#loginValider button:hover{
     color: forestgreen;
     font-size: 1.2em;
-    background-color: #999999;
+    border-color: forestgreen;
+
 }
 
-.loginValider{
+#loginValider{
     display: flex;
-    justify-content: space-between;
     width: 300px;
     align-items: center;
 
 }
 
-.loginOption{
+#loginOption{
     display: flex;
     flex-direction: column;
     width: 145px;
+    font-size: 0.9rem;
+    margin-top: 15px;
 }
 
-.rememberMe{
+#loginOption input{
     display: flex;
+    width: 30px;
 }
+
+#rememberMe{
+    width: 250px;
+}
+
+#rememberMe label{
+    display: flex;
+    width: 200px;
+}
+
+#forgotPsw{
+    width: 200px;
+    margin-left: 35px;
+    font-family:"Times New Roman", sans-serif;
+}
+#forgotPsw a:hover{
+    color: forestgreen;
+}
+
 
 
 /* ===================== Page: Mon Profil ===================== */
@@ -406,6 +441,17 @@ select {
     border-color: forestgreen;
 }
 
+#creationBoutons{
+    display: flex;
+    margin-top: 5px;
+}
+#creationBoutons button{
+    margin-right: 5px;
+}
+#btnAnnuler:hover{
+    color: darkred;
+    border-color: darkred;
+}
 
 
 /* ===================== Responsive ===================== */
@@ -413,11 +459,13 @@ select {
 @media only screen and (max-width: 480px) {
     body{
         padding: 2%;
+        margin: 0;
     }
     nav{
         margin: 1%;
         font-size: 0.7em;
     }
+
 }
 
 
