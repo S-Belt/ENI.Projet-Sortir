@@ -100,10 +100,6 @@ class SortieRepository extends ServiceEntityRepository
                             ->setParameter(':passee', $passee);
         }
 
-
-
-
-        //manque nonInscrit et passée
         $query = $queryBuilder->getQuery();
         return $query->getResult();
     }
