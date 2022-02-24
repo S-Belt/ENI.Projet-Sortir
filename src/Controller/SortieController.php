@@ -121,15 +121,15 @@ class SortieController extends AbstractController
         $resultats = $sortieRepository->recherche($campus, $nomContient, $dateDebut, $dateFin
                                                     ,$organise, $inscrit, $nonInscrit, $passee);
 
-        return $this->redirectToRoute('main_home', [
-            'liste' => $resultats,
-            'campus' => $campus
-        ]);
-
-        /*return $this->render('main/home.html.twig', [
+     /*   return $this->redirectToRoute('main_home', [
             'liste' => $resultats,
             'campus' => $campus
         ]);*/
+
+        return $this->render('main/home.html.twig', [
+            'liste' => $resultats,
+            'campus' => $campus
+        ]);
     }
 
 
