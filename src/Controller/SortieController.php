@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
+use App\Service\EtatService;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -61,47 +62,6 @@ class SortieController extends AbstractController
     }
 
 
-    /**
-     * @Route ("/sortie/etat", name="sortie_etat")
-     */
-
-    public function etat(SortieRepository $sortieRepository, EtatRepository $etatRepository,EntityManagerInterface $entityManager){
-
-        $sorties= $sortieRepository->findAll();
-        $etats= $etatRepository->findAll();
-        $dateActuelle= new \DateTime();
-
-
-        foreach ($sorties as $sortie){
-
-//            $dateDeFin=$sortie->getDateHeureDebut() + );
-//            $duree = $sortie ->getDuree();
-//            $debut = $sortie ->getDateHeureDebut();
-//            date('Y-m-d H:i',strtotime($debut,$duree));
-//            $interval = new \DateInterval('PT4H');
-//            Datetime::add($debut);
-
-
-
-            if ($sortie->getParticipants()->count()===$sortie->getNbInscriptionMax()){
-                $sortie->setEtat($etats[2]);
-                $entityManager->persist($sortie);
-            }
-            if($sortie->getDateHeureDebut()>=$dateActuelle){
-
-                $sortie->setEtat($etats[3]);
-                $entityManager->persist($sortie);
-            }
-            if($sortie->getDateLimiteInscription()>=$dateActuelle){
-
-                $sortie->setEtat($etats[2]);
-                $entityManager->persist($sortie);
-            }
-
-        }
-        $entityManager->flush();
-        return $this->redirectToRoute('main_home');
-    }
 
     /**
      * @Route("sortie/recherche", name="sortie_recherche")
@@ -121,14 +81,14 @@ class SortieController extends AbstractController
         $passee = null;
 
         if(isset($_POST['organise'])){
-            $organise = true;
+            $organise = $this->getUser();
         }
         //doit etre le pseudo du connecté
         if(isset($_POST['inscrit'])){
-            $inscrit = true;
+            $inscrit = $this->getUser();
         }
         if(isset($_POST['nonInscrit'])){
-            $nonInscrit = true;
+            $nonInscrit = $this->getUser()->getPseudo();
         }
         if(isset($_POST['passee'])){
             $passee = true;
@@ -142,5 +102,7 @@ class SortieController extends AbstractController
             'campus' => $campus
         ]);
     }
+
+
 
 }

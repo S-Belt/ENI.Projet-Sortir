@@ -54,4 +54,6 @@ class EtatService
         $this->entityManager->flush();
         return $sorties;
     }
+
+
 }
