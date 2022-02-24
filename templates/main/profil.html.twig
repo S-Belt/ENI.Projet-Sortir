@@ -9,13 +9,11 @@
     <br>
     <article class="profil">
 
-        {% if app.user.photoFilename is not null%}
-        <img src="{{ asset('uploads/photos/' ~ participant.photoFilename) }}" alt="la photo de {{ participant.pseudo }}">
-        {% endif %}
 
-        {% if app.user.photoFilename is null%}
-        <img src="" alt="une photo de profil nulle">
-        {% endif %}
+        <img id="photoProfil" src="{{ asset('uploads/photos/' ~ participant.photoFilename) }}" alt="la photo de {{ participant.pseudo }}">
+
+
+
     <table>
         <tr>
             <td>Prénom:</td>

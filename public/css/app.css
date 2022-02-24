@@ -246,6 +246,11 @@ select {
     display: none;
 }
 
+#photoProfil{
+
+    max-width: 400px;
+}
+
 /* ===================== Afficher sortie ===================== */
 
 #sortieGauche{

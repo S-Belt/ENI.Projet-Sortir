@@ -73,7 +73,7 @@ class MainController extends AbstractController
                                Request $request, EntityManagerInterface $entityManager,
                                UserPasswordHasherInterface $userPasswordHasher,
                                SluggerInterface $slugger) {
-     $participant = new Participant();
+
      $participant = $repository->find($id);
      
 
