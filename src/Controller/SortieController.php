@@ -70,18 +70,18 @@ class SortieController extends AbstractController
 
     public function annulerSortie (int $id, EntityManagerInterface  $entityManager, SortieRepository $sortieRepository, EtatRepository $etatRepository){
 
-//        $ouverte = $etatRepository->find(2);
+//        trop d'erreur si on vérifie une seconde condition mais il faut quand même le faire
 
         $sortie= $sortieRepository->find($id);
-        $etatAnnule= $etatRepository->find(6);
+        $etats= $etatRepository->findAll();
 
-        if ($sortie->getEtat()->getLibelle() != 'Ouverte'|| $sortie->getEtat()->getLibelle() !='Activitée en cours'){
+        if ($sortie->getEtat() !== $etats[3] ){
 
-            $sortie->setEtat($etatAnnule);
+            $sortie->setEtat($etats[5]);
             $entityManager->persist($sortie);
             $entityManager->flush();
-
-
+        } else {
+            $this->addFlash('Erreur','Impossible d\'annuler cette sortie');
         }
         return $this->redirectToRoute('main_home');
     }
