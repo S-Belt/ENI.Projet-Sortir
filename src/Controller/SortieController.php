@@ -63,6 +63,29 @@ class SortieController extends AbstractController
     }
 
 
+    /**
+     * @Route ("/sortie/annulerSortie/{id}", name="sortie_annulerSortie")
+     */
+
+
+    public function annulerSortie (int $id, EntityManagerInterface  $entityManager, SortieRepository $sortieRepository, EtatRepository $etatRepository){
+
+//        $ouverte = $etatRepository->find(2);
+
+        $sortie= $sortieRepository->find($id);
+        $etatAnnule= $etatRepository->find(6);
+
+        if ($sortie->getEtat()->getLibelle() != 'Ouverte'|| $sortie->getEtat()->getLibelle() !='Activitée en cours'){
+
+            $sortie->setEtat($etatAnnule);
+            $entityManager->persist($sortie);
+            $entityManager->flush();
+
+
+        }
+        return $this->redirectToRoute('main_home');
+    }
+
 
     /**
      * @Route("sortie/recherche", name="sortie_recherche")
