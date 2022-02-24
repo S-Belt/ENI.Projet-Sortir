@@ -31,19 +31,19 @@
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-    <div class="loginValider">
-        <div>
-        <button class="btn btn-lg btn-primary" type="submit">Connexion</button>
-    </div>
-        <div class="loginOption">
-            <div class="rememberMe">
-                <label><input type="checkbox" name="_remember_me">Se souvenir de moi</label>
+        <div id="loginValider">
+            <div>
+                <button class="btn btn-lg btn-primary" type="submit">Connexion</button>
             </div>
-            <div class="forgotPsw">
-                 <a href="" > Mot de passe oublié</a>
+            <div id="loginOption">
+                <div id="rememberMe">
+                    <label><input type="checkbox" name="_remember_me" checked>Se souvenir de moi</label>
+                </div>
+                <div id="forgotPsw">
+                     <a href="" >Mot de passe oublié</a>
+                </div>
             </div>
-         </div>
-    </div>
+        </div>
     </div>
 </form>
 

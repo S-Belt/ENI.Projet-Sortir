@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CampusRepository;
 use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
 use App\Service\EtatService;
@@ -90,8 +91,9 @@ class SortieController extends AbstractController
     /**
      * @Route("sortie/recherche", name="sortie_recherche")
      */
-    public function recherche(SortieRepository $sortieRepository, Request $request){
-        $campus = $sortieRepository->findAll();
+    public function recherche(SortieRepository $sortieRepository, Request $request, CampusRepository $campusRepository){
+        $sortis = $sortieRepository->findAll();
+        $campuss = $campusRepository->findAll();
 
 
         $campus = $_POST['selectCampus'];
@@ -121,14 +123,11 @@ class SortieController extends AbstractController
         $resultats = $sortieRepository->recherche($campus, $nomContient, $dateDebut, $dateFin
                                                     ,$organise, $inscrit, $nonInscrit, $passee);
 
-     /*   return $this->redirectToRoute('main_home', [
-            'liste' => $resultats,
-            'campus' => $campus
-        ]);*/
 
         return $this->render('main/home.html.twig', [
             'liste' => $resultats,
-            'campus' => $campus
+            'sortis' => $sortis,
+            'campus' => $campuss
         ]);
     }
 
