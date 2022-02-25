@@ -331,7 +331,9 @@ select {
     font-weight: bold;
     background-color: forestgreen;
 }
-
+#logoCheck{
+    max-width: 30px;
+}
 /* ===================== Filtres de sorties ===================== */
 
 #articleRecherche{

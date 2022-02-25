@@ -75,7 +75,7 @@
                 <td>{{ li.participants | length }} / {{ li.nbInscriptionMax }}</td>
                 <td>{{ li.etat.libelle }}</td>
 
-                <td>{% for part in li.participants %}{% if app.user.id is same as(part.id) %}X{% else %}{% endif %}{% endfor %}</td>
+                <td>{% for part in li.participants %}{% if app.user.id is same as(part.id) %}<img id="logoCheck" src="{{ asset('img/55-559850_check-mark-check-png-transparent-png.png') }}" alt="un logo check">{% else %}{% endif %}{% endfor %}</td>
 
                 <td><a href="{{ path('main_profil', {'id': li.organisateur.id}) }}"> {{ li.organisateur.pseudo }} </a></td>
                 <td>
