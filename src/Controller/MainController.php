@@ -107,7 +107,7 @@ class MainController extends AbstractController
                      $newFilename
                  );
              }catch (FileException $exception){
-                 throw $this->createNotFoundException('Ya un blem quequepart');
+                 throw $this->createNotFoundException('Il y a eu un probleme quelque part...');
              }
              $participant->setPhotoFilename($newFilename);
          }
