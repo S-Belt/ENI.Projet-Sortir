@@ -33,6 +33,12 @@
                 <td>Description et infos: </td>
                 <td>{{ sortie.infosSortie }}</td>
             </tr>
+            {% if sortie.motifAnnulation %}
+            <tr>
+                <td>Motif d'annulation</td>
+                <td> {{ sortie.motifAnnulation }}</td>
+            </tr>
+            {% endif %}
         </table>
     </article>
     <article id="sortieDroite">
