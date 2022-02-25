@@ -83,6 +83,11 @@ class Sortie
      */
     private $archive;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $motifAnnulation;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -248,6 +253,18 @@ class Sortie
     public function setArchive(?bool $archive): self
     {
         $this->archive = $archive;
+
+        return $this;
+    }
+
+    public function getMotifAnnulation(): ?string
+    {
+        return $this->motifAnnulation;
+    }
+
+    public function setMotifAnnulation(?string $motifAnnulation): self
+    {
+        $this->motifAnnulation = $motifAnnulation;
 
         return $this;
     }

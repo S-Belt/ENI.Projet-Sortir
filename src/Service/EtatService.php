@@ -33,7 +33,6 @@ class EtatService
             //Cloturée
             //Plus de places
 
-
             $dateFinDeSortie = new \DateTime();
             $dateFinDeSortie = $sortie->getDateHeureDebut();
             $dateLimiteArchivage = $dateFinDeSortie->modify('+30 day');

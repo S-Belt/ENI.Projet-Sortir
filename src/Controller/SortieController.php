@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\MotifAnnulationType;
 use App\Repository\CampusRepository;
 use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
@@ -76,6 +77,7 @@ class SortieController extends AbstractController
         $sortie= $sortieRepository->find($id);
         $etats= $etatRepository->findAll();
 
+
         if ($sortie->getEtat() !== $etats[3] ){
 
             $sortie->setEtat($etats[5]);
@@ -131,6 +133,28 @@ class SortieController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("sortie/motifAnnulation/{id}", name="sortie_motifAnnulation")
+     */
+
+    public function motifAnnulation(int $id,SortieRepository $sortieRepository,EntityManagerInterface $entityManager,Request $request){
+       $sortie = $sortieRepository->find($id);
+        $form = $this->createForm(MotifAnnulationType::class);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+            $motif = $data['motifAnnulation'];
+            $sortie->setMotifAnnulation($motif);
+            $entityManager->persist($sortie);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('sortie_annulerSortie',['id'=>$id]);
+        }
+
+
+       return $this->render('main/motifAnnulation.html.twig',['form'=>$form->createView()]);
+    }
 
 
 }

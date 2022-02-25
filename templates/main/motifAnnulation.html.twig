@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Motif d'Annulation
+{% endblock %}
+
+{% block main %}
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button>
+       Envoyer
+    </button>
+    {{ form_end(form) }}
+{% endblock %}

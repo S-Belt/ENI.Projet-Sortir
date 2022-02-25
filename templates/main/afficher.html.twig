@@ -85,7 +85,7 @@
     </table>
         <div>
             {% if app.user.pseudo is same as(sortie.organisateur.pseudo) %}
-                <button onclick="window.location.href='{{ path('sortie_annulerSortie', {'id':sortie.id}) }}'"> Annuler la sortie</button>
+                <button onclick="window.location.href='{{ path('sortie_motifAnnulation', {'id':sortie.id}) }}'"> Annuler la sortie</button>
             {%  endif%}
 
 
