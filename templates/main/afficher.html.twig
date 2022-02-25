@@ -86,17 +86,31 @@
         <div>
             {% if app.user.pseudo is same as(sortie.organisateur.pseudo) %}
                 <button onclick="window.location.href='{{ path('sortie_annulerSortie', {'id':sortie.id}) }}'"> Annuler la sortie</button>
-            {% else %}
-
-
-
-            <button id="sortieDesister" onclick="window.location.href='{{ path('sortie_seDesister', {'id':sortie.id}) }}'"> Se désister </button>
-
-              <button onclick="window.location.href='{{ path('sortie_sinscrire', {'id':sortie.id}) }}'"> S'inscrire</button>
-
-
-
             {%  endif%}
+
+
+            <div id="divSinscrire">
+                <button onclick="window.location.href='{{ path('sortie_sinscrire', {'id':sortie.id}) }}'"> S'inscrire</button>
+            </div>
+
+                {% for p in sortie.participants%}
+                    {% if p.pseudo is same as(app.user.pseudo) %}
+            <button id="sortieDesister" onclick="window.location.href='{{ path('sortie_seDesister', {'id':sortie.id}) }}'"> Se désister </button>
+                        <script>
+                            document.getElementById('divSinscrire').remove();
+                        </script>
+                    {% endif %}
+                {% endfor %}
+
+
+
+
+
+
+
+
+
+
 
         </div>
     </article>

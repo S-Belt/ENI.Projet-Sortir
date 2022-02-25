@@ -36,6 +36,7 @@ class MainController extends AbstractController
     public function home(CampusRepository $repository, SortieRepository $sortieRepository
                             ,EtatService $service): Response
     {
+
         $liste = $service->etat();
 
         $campus = $repository->findAll();
