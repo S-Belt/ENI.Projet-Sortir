@@ -38,9 +38,11 @@
     </table>
     </article>
     <br>
+    {% if app.user.pseudo is same as(participant.pseudo) %}
     <div class = "boutonModifier">
     <a href="{{ path('main_monProfil',{"id":app.user.id}) }}"> Modifier </a>
     </div>
+    {% endif %}
     <button onclick="{{ path('main_home') }}">Retour</button>
 {% endblock %}
 
