@@ -33,7 +33,7 @@ class SortieController extends AbstractController
                 $sortie->addParticipant($participant);
                 $entityManager->persist($sortie);
                 $entityManager->flush();
-                $this->addFlash('alert', 'Vous etes bien inscrit a cette sortie');
+                $this->addFlash('success', 'Vous etes bien inscrit a cette sortie');
 
             } else {
 
@@ -82,7 +82,7 @@ class SortieController extends AbstractController
             $entityManager->persist($sortie);
             $entityManager->flush();
         } else {
-            $this->addFlash('Erreur','Impossible d\'annuler cette sortie');
+            $this->addFlash('alert','Impossible d\'annuler cette sortie');
         }
         return $this->redirectToRoute('main_home');
     }

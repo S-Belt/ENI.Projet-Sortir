@@ -55,30 +55,18 @@ button:hover{
 
 
 
-/* ===================== Messages d'Erreur ===================== */
+/* ===================== Messages d'Erreur ou Success ===================== */
 
-/* label {
-    display: block;
-}
-
-input,
-textarea,
-select {
-    margin-bottom: 1rem;
-    box-sizing: border-box;
-    width: 150px;
-    max-width: 50%;
-}
 
 .flash {
-    padding: 20px;
+    padding: 10px;
     font-weight: bold;
-    font-size: 1.4rem;
-    margin: 1rem 0;
+    font-size: 1.2rem;
     border-radius: 5px;
 }
 
-.flash-success {background-color: darkolivegreen}*/
+.flash-success {color: forestgreen}
+.flash-alert {color: darkred}
 
 
 /* ===================== Body ===================== */
@@ -301,6 +289,11 @@ select {
     float: left;
     margin-top: 45px;
 }
+#sortieDesister:hover{
+    color: darkred;
+    border-color: darkred;
+}
+
 
 .resultat tbody tr:nth-child(odd){
     background-color: lightgray;
@@ -313,6 +306,9 @@ select {
 .resultat, .resultat td{
     border: solid black 2px;
     border-collapse: collapse;
+    width: 210px;
+    margin-bottom: 20px;
+
 }
 
 #tableHome{
