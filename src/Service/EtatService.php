@@ -20,40 +20,50 @@ class EtatService
     }
 
 
-    public function etat(){
+    public function etat()
+    {
 
-        $sorties= $this->sortieRepository->findAll();
-        $etats= $this->etatRepository->findAll();
-        $dateActuelle= new \DateTime();
+        $sorties = $this->sortieRepository->findAll();
+        $etats = $this->etatRepository->findAll();
+        $dateActuelle = new \DateTime();
         $dateDemain = $dateActuelle->modify('+1 day');
+        $aujourdhui = new \DateTime();
 
-
-
-        foreach ($sorties as $sortie){
+        foreach ($sorties as $sortie) {
             //Cloturée
             //Plus de places
-            if ($sortie->getParticipants()->count()===$sortie->getNbInscriptionMax()){
+
+
+            $dateFinDeSortie = new \DateTime();
+            $dateFinDeSortie = $sortie->getDateHeureDebut();
+            $dateLimiteArchivage = $dateFinDeSortie->modify('+30 day');
+
+            if ($sortie->getParticipants()->count() === $sortie->getNbInscriptionMax()) {
                 $sortie->setEtat($etats[2]);
                 $this->entityManager->persist($sortie);
             }
             //Cloturée
             //Date inscription dépassée
-            if($sortie->getDateLimiteInscription()>=$dateActuelle){
+            if ($sortie->getDateLimiteInscription() >= $dateActuelle) {
                 $sortie->setEtat($etats[2]);
                 $this->entityManager->persist($sortie);
             }
             //Activité en cours
             //Elle se deroule maintenant
-            if($sortie->getDateHeureDebut()>=$dateActuelle && $sortie->getDateHeureDebut()< $dateDemain){
+            if ($sortie->getDateHeureDebut() >= $dateActuelle && $sortie->getDateHeureDebut() < $dateDemain) {
                 $sortie->setEtat($etats[3]);
                 $this->entityManager->persist($sortie);
             }
 
+            if($aujourdhui > $dateLimiteArchivage){
+                $sortie->setArchive(true);
+                $this->entityManager->persist($sortie);
 
+            }
+
+            $this->entityManager->flush();
+            return $sorties;
         }
-        $this->entityManager->flush();
-        return $sorties;
     }
-
 
 }

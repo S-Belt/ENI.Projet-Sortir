@@ -78,6 +78,11 @@ class Sortie
      */
     private $campus;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $archive;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -231,6 +236,18 @@ class Sortie
     public function setCampus(?Campus $campus): self
     {
         $this->campus = $campus;
+
+        return $this;
+    }
+
+    public function getArchive(): ?bool
+    {
+        return $this->archive;
+    }
+
+    public function setArchive(?bool $archive): self
+    {
+        $this->archive = $archive;
 
         return $this;
     }

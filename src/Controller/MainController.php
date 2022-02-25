@@ -129,6 +129,7 @@ class MainController extends AbstractController
     public function creerSortie(Request $request, EntityManagerInterface $entityManager, EtatRepository $repository){
         $organisateur = $this->getUser();
         $sortie = new Sortie();
+        $sortie ->setArchive(false);
 
         $etatCree = $repository->find(1);
         $etatOuverte = $repository->find(2);
