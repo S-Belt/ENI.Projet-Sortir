@@ -273,6 +273,17 @@ select {
 
     max-width: 200px;
 }
+.boutonModifier {
+    height: 50px;
+    width: 100px;
+    background: linear-gradient(65deg, ghostwhite, lightgrey);
+    border-radius: 15px;
+    border: #999999 solid 2px;
+}
+
+.boutonModifier > a {
+    text-decoration: none;
+}
 
 /* ===================== Afficher sortie ===================== */
 
