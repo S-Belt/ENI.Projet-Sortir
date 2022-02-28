@@ -59,11 +59,11 @@ class EtatService
                 $this->entityManager->persist($sortie);
             }
 
-//            if($aujourdhui > $dateLimiteArchivage){
-//                $sortie->setArchive(true);
-//                $this->entityManager->persist($sortie);
-//
-//            }
+            if($aujourdhui > $dateLimiteArchivage){
+                $sortie->setArchive(true);
+                $this->entityManager->persist($sortie);
+
+            }
 
 
         }
