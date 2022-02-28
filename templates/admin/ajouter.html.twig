@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Ajouter Participant | {{ parent() }}
+{% endblock %}
+
+{% block main %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button>Ajouter</button>
+    {{ form_end(form) }}
+
+{% endblock %}
+
