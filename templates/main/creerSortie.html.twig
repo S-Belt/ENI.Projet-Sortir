@@ -6,7 +6,8 @@
 
 {% block main %}
     <h2>Créer une sortie</h2>
-    <a href="{{ path('sortie_ajouterVille') }}">Ajouter une ville</a>
+    <a href="{{ path('sortie_ajouterVille') }}">Ajouter une ville</a><br>
+    <a href="{{ path('main_creerLieu') }}">Ajouter un lieu</a><br>
     {{ form_start(sortieForm) }}
     {{ form_row(sortieForm.nom) }}
     {{ form_row(sortieForm.dateHeureDebut) }}
@@ -17,7 +18,6 @@
     {{ form_row(sortieForm.campus) }}
     {{ form_row(sortieForm.ville) }}
     {{ form_row(sortieForm.Lieu) }}
-    <a href="{{ path('main_creerLieu') }}">Ajouter un lieu</a>
     {{ form_row(sortieForm.rue) }}
     {{ form_row(sortieForm.codePostal) }}
 

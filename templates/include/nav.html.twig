@@ -8,11 +8,10 @@
                         <a href="{{ path('main_creerSortie') }}">Créer une sortie</a>
                         <a href="{{ path('main_profil',{"id":app.user.id}) }}">Mon profil</a>
                         <a href="{{ path('app_logout') }}">Se Déconnecter</a>
-                        {#{% if app.user.role = role-admin %}#}
+                        {% if 'ROLE_ADMIN' in app.user.roles %}
                         <a href="{{ path('admin_home') }}">Admin</a>
 
-                        <a href="#">Villes</a>
-                        <a href="#">Campus </a>
+                        {% endif %}
                  {% else %}
                         <a href="{{ path('app_login') }}">Se connecter</a>
                         <a href="{{ path('app_register') }}">Créer un compte</a>
