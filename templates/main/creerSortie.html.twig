@@ -6,7 +6,7 @@
 
 {% block main %}
     <h2>Créer une sortie</h2>
-
+    <a href="{{ path('sortie_ajouterVille') }}">Ajouter une ville</a>
     {{ form_start(sortieForm) }}
     {{ form_row(sortieForm.nom) }}
     {{ form_row(sortieForm.dateHeureDebut) }}
