@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Ville;
 use App\Form\MotifAnnulationType;
+use App\Form\VilleFormType;
 use App\Repository\CampusRepository;
 use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
@@ -154,6 +156,27 @@ class SortieController extends AbstractController
 
 
        return $this->render('main/motifAnnulation.html.twig',['form'=>$form->createView()]);
+    }
+
+
+    /**
+     * @Route("sortie/ajouterVille", name="sortie_ajouterVille")
+     */
+    public function ajouterVille(EntityManagerInterface $entityManager, Request $request){
+        $ville = new Ville();
+        $villeForm = $this->createForm(VilleFormType::class, $ville);
+        $villeForm->handleRequest($request);
+
+        if($villeForm->isSubmitted() && $villeForm->isValid()){
+            $entityManager->persist($ville);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('main_creerSortie');
+        }
+
+        return $this->render("sortie/ajouterVille.html.twig", [
+            "villeForme" => $villeForm->createView()
+        ]);
     }
 
 

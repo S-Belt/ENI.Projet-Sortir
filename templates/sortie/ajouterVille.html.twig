@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+    Ajouter une ville | {{ parent() }}
+{% endblock %}
+
+{% block main %}
+    <h3>Ajouter une ville</h3>
+    {{ form_start(villeForme) }}
+    {{ form_widget(villeForme) }}
+    <button>Ajouter</button>
+    {{ form_end(villeForme) }}
+
+{% endblock %}
+
