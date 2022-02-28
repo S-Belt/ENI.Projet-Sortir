@@ -29,13 +29,18 @@ class EtatService
         $dateDemain = $dateActuelle->modify('+1 day');
         $aujourdhui = new \DateTime();
 
+
+
         foreach ($sorties as $sortie) {
             //Cloturée
             //Plus de places
-
-            $dateFinDeSortie = new \DateTime();
+            $dateFinDeSortie = new \DateTime;
             $dateFinDeSortie = $sortie->getDateHeureDebut();
-            $dateLimiteArchivage = $dateFinDeSortie->modify('+30 day');
+            $interval = new \DateInterval('P1M');
+
+           $dateLimiteArchivage = $dateFinDeSortie->add($interval);
+
+
 
             if ($sortie->getParticipants()->count() === $sortie->getNbInscriptionMax()) {
                 $sortie->setEtat($etats[2]);
@@ -54,11 +59,11 @@ class EtatService
                 $this->entityManager->persist($sortie);
             }
 
-            if($aujourdhui > $dateLimiteArchivage){
-                $sortie->setArchive(true);
-                $this->entityManager->persist($sortie);
-
-            }
+//            if($aujourdhui > $dateLimiteArchivage){
+//                $sortie->setArchive(true);
+//                $this->entityManager->persist($sortie);
+//
+//            }
 
 
         }
