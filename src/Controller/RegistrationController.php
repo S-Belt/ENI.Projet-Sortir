@@ -24,6 +24,7 @@ class RegistrationController extends AbstractController
         $user->setAdministrateur(false);
         $user->setActif(true);
         $user->setPhotoFilename('defautProfil.png');
+        $user->setRoles(['ROLE_USER']);
 
 
         $form = $this->createForm(RegistrationFormType::class, $user);
