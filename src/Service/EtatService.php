@@ -60,9 +60,10 @@ class EtatService
 
             }
 
-            $this->entityManager->flush();
-            return $sorties;
+
         }
+        $this->entityManager->flush();
+        return $sorties;
     }
 
 }
