@@ -38,7 +38,7 @@ class EtatService
             $dateFinDeSortie = $sortie->getDateHeureDebut();
             $interval = new \DateInterval('P1M');
 
-           $dateLimiteArchivage = $dateFinDeSortie->add($interval);
+           //$dateLimiteArchivage = $dateFinDeSortie->add($interval);
 
 
 
@@ -48,13 +48,13 @@ class EtatService
             }
             //Cloturée
             //Date inscription dépassée
-            if ($sortie->getDateLimiteInscription() >= $dateActuelle) {
-                $sortie->setEtat($etats[2]);
+            if ($sortie->getDateLimiteInscription() <= $dateActuelle) {
+                $sortie->setEtat($etats[4]);
                 $this->entityManager->persist($sortie);
             }
             //Activité en cours
             //Elle se deroule maintenant
-            if ($sortie->getDateHeureDebut() >= $dateActuelle && $sortie->getDateHeureDebut() < $dateDemain) {
+            if ($sortie->getDateHeureDebut() >= $aujourdhui && $sortie->getDateHeureDebut() < $dateDemain) {
                 $sortie->setEtat($etats[3]);
                 $this->entityManager->persist($sortie);
             }

@@ -40,7 +40,6 @@ class MainController extends AbstractController
         $liste = $service->etat();
 
         $campus = $repository->findAll();
-        //$liste = $sortieRepository->liste($organisateur);
 
         //test. Le service recupere deja la liste.
         //$liste = $sortieRepository->findAll();
