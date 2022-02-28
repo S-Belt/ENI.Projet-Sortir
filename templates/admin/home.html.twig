@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<h2>Admin Home</h2>
+
+    <table>
+        <tr>
+            <td>Nom</td>
+            <td>Prenom</td>
+            <td>Pseudo</td>
+            <td>Email</td>
+            <td>Actif</td>
+        </tr>
+        {% for participant in tabParticipants %}
+        <tr>
+            <td>{{ participant.nom }}</td>
+            <td>{{ participant.prenom }}</td>
+            <td>{{ participant.pseudo }}</td>
+            <td>{{ participant.email }}</td>
+            {% if participant.actif %}
+                <td>Actif  </td>
+            {% else %}
+                <td>Inactif</td>
+                {% endif %}
+            <td><a href="{{ path('admin_supprimer', {'id':participant.id}) }}">Supprimer</a></td>
+            <td><a href="{{ path('admin_actif', {'id':participant.id}) }}">Modifier Status</a></td>
+
+        </tr>
+
+        {% endfor %}
+    </table>
+
+
+
+{% endblock %}
+
+
+
+{% block title %}
+Admin Home | {{ parent() }}
+{% endblock %}
+
