@@ -22,7 +22,7 @@
             {% if participant.actif %}
                 <td><img id="logoCheck" src="{{ asset('img/55-559850_check-mark-check-png-transparent-png.png') }}" alt="un logo check">  </td>
             {% else %}
-                <td><img id="logoCroix" src="{{ asset('img/croix.jpg') }}" alt="une croix rouge"></td>
+                <td><img id="logoCroix" src="{{ asset('img/croix.png') }}" alt="une croix rouge"></td>
                 {% endif %}
 
             <td><button  onclick="window.location.href = '{{ path( 'admin_supprimer',{'id':participant.id} ) }}'"> Supprimer </button></td>
