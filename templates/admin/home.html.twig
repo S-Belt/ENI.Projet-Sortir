@@ -1,37 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-<style>
-     .adminButton {
-        background: transparent;
-         border: none;
-    }
 
-     .adminButtonTd {
-         width: 20px;
-     }
-</style>
 <h2>Menu Admin</h2>
 
     <table id = "tableAdminHome">
         <tr class ="trAdminTitres">
-            <td>NOM</td>
-            <td>PRENOM</td>
-            <td>PSEUDO</td>
-            <td>EMAIL</td>
-            <td>ACTIF</td>
+            <td class = "adminTd">NOM</td>
+            <td class = "adminTd">PRENOM</td>
+            <td class = "adminTd">PSEUDO</td>
+            <td class = "adminTd">EMAIL</td>
+            <td class = "adminTd">ACTIF</td>
         </tr>
         {% for participant in tabParticipants %}
         <tr id ="trAdminTitres">
-            <td>{{ participant.nom }}</td>
-            <td>{{ participant.prenom }}</td>
-            <td>{{ participant.pseudo }}</td>
-            <td>{{ participant.email }}</td>
+            <td class = "adminTd">{{ participant.nom }}</td>
+            <td class = "adminTd">{{ participant.prenom }}</td>
+            <td class = "adminTd">{{ participant.pseudo }}</td>
+            <td class = "adminTd">{{ participant.email }}</td>
 
             {% if participant.actif %}
-                <td><img id="logoCheckAdmin" src="{{ asset('img/55-559850_check-mark-check-png-transparent-png.png') }}" alt="un logo check">  </td>
+                <td class = "adminTd" ><img id="logoCheckAdmin" src="{{ asset('img/55-559850_check-mark-check-png-transparent-png.png') }}" alt="un logo check">  </td>
             {% else %}
-                <td><img id="logoCroix" src="{{ asset('img/croix.png') }}" alt="une croix rouge"></td>
+                <td class = "adminTd" ><img id="logoCroix" src="{{ asset('img/croix.png') }}" alt="une croix rouge"></td>
                 {% endif %}
 
             <td class = "adminButtonTd" > <button class = "adminButton" onclick="window.location.href = '{{ path( 'admin_supprimer',{'id':participant.id} ) }}'"> Supprimer </button> </td>
