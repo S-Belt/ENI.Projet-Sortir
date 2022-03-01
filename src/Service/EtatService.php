@@ -32,32 +32,65 @@ class EtatService
 
 
         foreach ($sorties as $sortie) {
-            //Cloturée
-            //Plus de places
+
             $dateFinDeSortie = new \DateTime;
             $dateFinDeSortie = $sortie->getDateHeureDebut();
             $interval = new \DateInterval('P1M');
 
-           //$dateLimiteArchivage = $dateFinDeSortie->add($interval);
+            //$dateLimiteArchivage = $dateFinDeSortie->add($interval);
+
+           $debutSortie = $sortie->getDateHeureDebut()->format("d-m-Y");
+           $dateAujourdhui = new \DateTime();
+           $dateAujourdhui->format("d-m-Y");
 
 
 
+
+
+
+
+
+            //Cloturée
+            //Plus de places
             if ($sortie->getParticipants()->count() === $sortie->getNbInscriptionMax()) {
                 $sortie->setEtat($etats[2]);
                 $this->entityManager->persist($sortie);
             }
-            //Cloturée
-            //Date inscription dépassée
-            if ($sortie->getDateLimiteInscription() <= $dateActuelle) {
-                $sortie->setEtat($etats[4]);
-                $this->entityManager->persist($sortie);
-            }
             //Activité en cours
             //Elle se deroule maintenant
-            if ($sortie->getDateHeureDebut() >= $aujourdhui && $sortie->getDateHeureDebut() < $dateDemain) {
+            /*elseif ($sortie->getDateHeureDebut() >= $aujourdhui && $sortie->getDateHeureDebut() < $dateDemain) {
+                $sortie->setEtat($etats[3]);
+                $this->entityManager->persist($sortie);
+            }*/
+            //Activité en cours
+            //Elle se deroule maintenant
+            elseif ($debutSortie == $dateAujourdhui->format("d-m-Y") ){
                 $sortie->setEtat($etats[3]);
                 $this->entityManager->persist($sortie);
             }
+            //Passée
+            //Date inscription dépassée
+            elseif ($sortie->getDateLimiteInscription() <= $dateActuelle) {
+                $sortie->setEtat($etats[4]);
+                $this->entityManager->persist($sortie);
+            }
+            //Créee
+            //Si elle est à l'état Créee,
+            //elle le reste
+            elseif($sortie->getEtat() === $etats[0]){
+                $sortie->setEtat($etats[0]);
+                $this->entityManager->persist($sortie);
+            }
+            //Ouverte
+            //Si elle n'est rentrée dans aucun traitement
+            //c'est qu'elle est ouverte
+            else{
+                $sortie->setEtat($etats[1]);
+                $this->entityManager->persist($sortie);
+            }
+
+
+
 
 //            if($aujourdhui > $dateLimiteArchivage){
 //                $sortie->setArchive(true);
