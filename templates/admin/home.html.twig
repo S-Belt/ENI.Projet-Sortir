@@ -1,27 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
+
 <h2>Admin Home</h2>
 
-    <table>
-        <tr>
-            <td>Nom</td>
-            <td>Prenom</td>
-            <td>Pseudo</td>
-            <td>Email</td>
-            <td>Actif</td>
+    <table id = "tableAdminHome">
+        <tr class ="trAdminTitres">
+            <td>NOM</td>
+            <td>PRENOM</td>
+            <td>PSEUDO</td>
+            <td>EMAIL</td>
+            <td>ACTIF</td>
         </tr>
         {% for participant in tabParticipants %}
-        <tr>
+        <tr id ="trAdminTitres">
             <td>{{ participant.nom }}</td>
             <td>{{ participant.prenom }}</td>
             <td>{{ participant.pseudo }}</td>
             <td>{{ participant.email }}</td>
 
             {% if participant.actif %}
-                <td>Actif  </td>
+                <td><img id="logoCheck" src="{{ asset('img/55-559850_check-mark-check-png-transparent-png.png') }}" alt="un logo check">  </td>
             {% else %}
-                <td>Inactif</td>
+                <td><img id="logoCroix" src="{{ asset('img/croix.jpg') }}" alt="une croix rouge"></td>
                 {% endif %}
             <td><a href="{{ path('admin_supprimer', {'id':participant.id}) }}">Supprimer</a></td>
             <td><a href="{{ path('admin_actif', {'id':participant.id}) }}">Modifier Status</a></td>
@@ -31,10 +32,9 @@
         {% endfor %}
     </table>
     <br>
-    <a href="{{ path('admin_ajouter') }}"> Ajouter un Utilisateur</a><br>
-    <a href="{{ path('sortie_ajouterVille') }}">Ajouter une Ville</a><br>
-    <a href="#">Ajouter un Campus </a><br>
 
+    <button  onclick="window.location.href = '{{ path('admin_ajouter') }}'"> Ajouter un Utilisateur </button>
+    <button  onclick="window.location.href = '{{ path('sortie_ajouterVille') }}'"> Ajouter une Ville </button>
 
 
 {% endblock %}
