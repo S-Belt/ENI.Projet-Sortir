@@ -50,6 +50,8 @@ class EtatService
 
 
 
+
+
             //Cloturée
             //Plus de places
             if ($sortie->getParticipants()->count() === $sortie->getNbInscriptionMax()) {
@@ -90,13 +92,14 @@ class EtatService
             }
 
 
+            //Archivée
+            //Si la sortie a eu lieu il a plus d'un mois
+            $sortieArchive = date('Y-m-d', strtotime("$debutSortie + 1 month"));
+            if($sortieArchive < $dateAujourdhui->format('Y-m-d')){
+                $sortie->setArchive(true);
+                $this->entityManager->persist($sortie);
+            }
 
-
-//            if($aujourdhui > $dateLimiteArchivage){
-//                $sortie->setArchive(true);
-//                $this->entityManager->persist($sortie);
-//
-//            }
 
 
         }
