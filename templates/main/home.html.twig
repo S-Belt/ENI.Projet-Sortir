@@ -68,6 +68,8 @@
                 <td>Actions</td>
             </tr>
             {% for li in liste %}
+                {% if li.archive %}
+                {% else %}
             <tr id="trHome">
                 <td>{{ li.nom }} </td>
                 <td>{{ li.dateHeureDebut | date("d/m/Y")}}</td>
@@ -84,6 +86,7 @@
                     qui incombent aux sens présents#}
                 </td>
             </tr>
+                    {% endif %}
             {% endfor %}
         </table>
         <div id="createSortie">
