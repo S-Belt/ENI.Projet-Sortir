@@ -10,6 +10,10 @@
     <article id="sortieGauche">
         <table>
             <tr>
+                <td> Organisateur :</td>
+                <td> <a href = "{{ path('main_profil', {'id': sortie.organisateur.id}) }}">  {{ sortie.organisateur.pseudo }} </a> </td>
+            </tr>
+            <tr>
                 <td>Nom de la sortie: </td>
                 <td>{{ sortie.nom }}</td>
             </tr>
@@ -38,6 +42,7 @@
                 <td>Motif d'annulation</td>
                 <td> {{ sortie.motifAnnulation }}</td>
             </tr>
+
             {% endif %}
         </table>
     </article>
