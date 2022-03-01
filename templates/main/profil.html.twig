@@ -43,6 +43,6 @@
     <a href="{{ path('main_monProfil',{"id":app.user.id}) }}"> Modifier </a>
     </div>
     {% endif %}
-    <button onclick="{{ path('main_home') }}">Retour</button>
+    <button onclick="window.location.href = '{{ path('main_home') }}'">Retour</button>
 {% endblock %}
 
