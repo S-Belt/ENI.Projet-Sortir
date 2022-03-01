@@ -179,5 +179,14 @@ class SortieController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("sortie/publier/{id}", name="sortie_publier")
+     */
+    public function publier($id, EtatService $service){
+        $service->publier($id);
+
+        return $this->redirectToRoute('main_afficher', ['id' => $id]);
+    }
+
 
 }

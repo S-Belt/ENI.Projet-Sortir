@@ -107,4 +107,12 @@ class EtatService
         return $sorties;
     }
 
+    public function publier($id){
+        $etats = $this->etatRepository->findAll();
+        $sortie = $this->sortieRepository->find($id);
+        $sortie->setEtat($etats[1]);
+        $this->entityManager->persist($sortie);
+        $this->entityManager->flush();
+    }
+
 }

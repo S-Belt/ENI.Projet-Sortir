@@ -98,7 +98,13 @@
         <div>
             {% if app.user.pseudo is same as(sortie.organisateur.pseudo)or 'ROLE_ADMIN' in app.user.roles %}
                 <button onclick="window.location.href='{{ path('sortie_motifAnnulation', {'id':sortie.id}) }}'"> Annuler la sortie</button>
+                {% if sortie.etat.libelle is same as('Créée') %}
+                    <button onclick="window.location.href='{{ path('sortie_publier', {'id':sortie.id}) }}'"> Publier la sortie</button>
+                {% endif %}
             {%  endif%}
+
+
+
 
 
             <div id="divSinscrire">
