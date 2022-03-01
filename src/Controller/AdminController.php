@@ -84,6 +84,7 @@ class AdminController extends AbstractController
         $participant->setAdministrateur(false);
         $participant->setPhotoFilename('defautProfil.png');
         $participant->setRoles(['ROLE_USER']);
+        $participant->setActif(true);
         $form->handleRequest($request);
 
 
