@@ -356,10 +356,27 @@ select {
     text-align: center;
     font-family: "Times New Roman", sans-serif;
     font-weight: bold;
-    background-color: forestgreen;
+    background-color: white;
+}
+
+td{
+    border: solid black 2px;
+    border-collapse: collapse;
+    width: 210px;
+    margin-bottom: 20px;
+
 }
 #logoCroix{
-    max-width: 15px;
+    max-width: 25px;
+}
+
+#logoCheckAdmin{
+    max-width: 25px;
+}
+
+button > .adminButton {
+    background-color: transparent;
+    font-size: 20px ;
 }
 /* ===================== Filtres de sorties ===================== */
 

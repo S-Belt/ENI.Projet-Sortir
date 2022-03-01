@@ -1,8 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
+<style>
+     .adminButton {
+        background: transparent;
+         border: none;
+    }
 
-<h2>Admin Home</h2>
+     .adminButtonTd {
+         width: 20px;
+     }
+</style>
+<h2>Menu Admin</h2>
 
     <table id = "tableAdminHome">
         <tr class ="trAdminTitres">
@@ -20,13 +29,13 @@
             <td>{{ participant.email }}</td>
 
             {% if participant.actif %}
-                <td><img id="logoCheck" src="{{ asset('img/55-559850_check-mark-check-png-transparent-png.png') }}" alt="un logo check">  </td>
+                <td><img id="logoCheckAdmin" src="{{ asset('img/55-559850_check-mark-check-png-transparent-png.png') }}" alt="un logo check">  </td>
             {% else %}
                 <td><img id="logoCroix" src="{{ asset('img/croix.png') }}" alt="une croix rouge"></td>
                 {% endif %}
 
-            <td><button  onclick="window.location.href = '{{ path( 'admin_supprimer',{'id':participant.id} ) }}'"> Supprimer </button></td>
-            <td><button  onclick="window.location.href = '{{ path('admin_actif',{'id':participant.id} ) }}'"> Modifier Status </button></td>
+            <td class = "adminButtonTd" > <button class = "adminButton" onclick="window.location.href = '{{ path( 'admin_supprimer',{'id':participant.id} ) }}'"> Supprimer </button> </td>
+            <td class = "adminButtonTd" > <button class = "adminButton" onclick="window.location.href = '{{ path('admin_actif',{'id':participant.id} ) }}'"> Modifier Status </button> </td>
 
         </tr>
 
