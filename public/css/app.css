@@ -76,6 +76,11 @@ button:hover{
     flex-direction: row;
 }
 
+.motifAnnulation{
+    color: red;
+    font-size: 30px;
+}
+
 
 
 /* ===================== Messages d'Erreur ou Success ===================== */
