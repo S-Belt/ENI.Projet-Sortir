@@ -53,6 +53,7 @@ button:hover{
     border-color: forestgreen;
 }
 .boutonAjouter{
+    margin-right: 40px;
     width:40px;
     height:40px;
     background:white;
@@ -72,7 +73,8 @@ button:hover{
 }
 
 .AjouterVilleEtLieu{
-    display:flex;
+    display:inline-flex;
+    margin
     flex-direction: row;
 }
 
@@ -257,14 +259,23 @@ input[type=checkbox]{
 
 /* ===================== Page: Mon Profil ===================== */
 
-.profil{
+main {
     display: flex;
     flex-direction: column;
-    align-self: center;
-    width: 50%;
+    text-align: center;
     justify-content: space-between;
 }
 
+.infoProfil{
+    text-align: center;
+    padding-left: 46.5%;
+
+}
+
+.infoProfil  tr {
+
+
+}
 
 .profilForm button{
     height: 70px;
@@ -529,7 +540,7 @@ button > .adminButton {
 }
 
 #creationBoutons{
-    display: flex;
+    display: inline-flex;
     margin-top: 5px;
 }
 #creationBoutons button{

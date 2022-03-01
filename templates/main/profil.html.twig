@@ -14,6 +14,7 @@
 
 
 
+        <div class ="infoProfil">
     <table>
         <tr>
             <td>Prénom:</td>
@@ -36,11 +37,13 @@
             <td>{{ participant.campus.nom }}</td>
         </tr>
     </table>
-    </article>
+        </div>
     <br>
     {% if app.user.pseudo is same as(participant.pseudo) %}
         <button class ="btn" onclick="window.location.href = '{{ path('main_monProfil',{"id":app.user.id}) }}'" > Modifier </button>
     {% endif %}
     <button onclick="window.location.href = '{{ path('main_home') }}'">Retour</button>
+
+    </article>
 {% endblock %}
 
