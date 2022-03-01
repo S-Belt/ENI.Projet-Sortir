@@ -90,6 +90,11 @@ class AdminController extends AbstractController
 
         if($form->isSubmitted() && $form->isSubmitted()){
 
+
+            if($participant->getAdministrateur()){
+                $participant->setRoles(['ROLE_ADMIN']);
+            }
+
             $participant->setPassword(
                 $userPasswordHasher->hashPassword(
                     $participant,
