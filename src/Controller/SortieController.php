@@ -40,7 +40,7 @@ class SortieController extends AbstractController
 
             } else {
 
-                $this->addFlash('alert', 'Sorry, on peut plus s\'inscrire a cette sortie');
+                $this->addFlash('alert', 'Sorry, on peut pas s\'inscrire a cette sortie');
 
             }
         }else {
