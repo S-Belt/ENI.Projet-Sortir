@@ -93,6 +93,7 @@ class EtatService
             //Ouverte
             //Si elle n'est rentrée dans aucun traitement
             //c'est qu'elle est ouverte
+            //
             else{
                 $sortie->setEtat($etats[1]);
                 $this->entityManager->persist($sortie);
