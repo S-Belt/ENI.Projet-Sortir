@@ -39,7 +39,7 @@
     </article>
     <br>
     {% if app.user.pseudo is same as(participant.pseudo) %}
-        <button class ="btn" onclick="window.location.href = '{{ path('main_monProfil',{"id":app.user.id}) }}" > Modifier </button>
+        <button class ="btn" onclick="window.location.href = '{{ path('main_monProfil',{"id":app.user.id}) }}'" > Modifier </button>
     {% endif %}
     <button onclick="window.location.href = '{{ path('main_home') }}'">Retour</button>
 {% endblock %}
