@@ -52,6 +52,29 @@ button:hover{
     color: forestgreen;
     border-color: forestgreen;
 }
+.boutonAjouter{
+    width:40px;
+    height:40px;
+    background:white;
+    text-align:center;
+    overflow:hidden;
+    font-size:1.5em;
+    color:#fff;
+    border-radius:50px;
+}
+
+#sortie_form_ville {
+    width:auto;
+}
+
+#sortie_form_Lieu {
+    width:auto;
+}
+
+.AjouterVilleEtLieu{
+    display:flex;
+    flex-direction: row;
+}
 
 
 
