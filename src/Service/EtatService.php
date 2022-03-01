@@ -83,6 +83,13 @@ class EtatService
                 $sortie->setEtat($etats[0]);
                 $this->entityManager->persist($sortie);
             }
+            //Annulée
+            //Si elle est à Annulée,
+            //elle le reste
+            elseif($sortie->getEtat() === $etats[5]){
+                $sortie->setEtat($etats[5]);
+                $this->entityManager->persist($sortie);
+            }
             //Ouverte
             //Si elle n'est rentrée dans aucun traitement
             //c'est qu'elle est ouverte
