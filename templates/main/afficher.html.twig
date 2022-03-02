@@ -13,8 +13,8 @@
     <article id="sortieGauche">
         <table>
             <tr>
-                <td> Organisateur :</td>
-                <td> <a href = "{{ path('main_profil', {'id': sortie.organisateur.id}) }}">  {{ sortie.organisateur.pseudo }} </a> </td>
+                <td id ="organisateur"> Organisateur :</td>
+                <td id="organisateurLien"> <a href = "{{ path('main_profil', {'id': sortie.organisateur.id}) }}">  {{ sortie.organisateur.pseudo }} </a> </td>
             </tr>
             <tr>
                 <td>Nom de la sortie: </td>

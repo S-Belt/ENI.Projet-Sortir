@@ -572,7 +572,9 @@ nav {
 #accueilSurDesktop{display: none;}
 #accueilSurMobile{visibility: visible;}
 #messageAccueil{display: none;}
-    #logoSurMobile{display: block;}
+#logoSurMobile{display: block;}
+#organisateur{display:none;}
+#organisateurLien{display: none;}
 
     .detailsSortie{
         display: flex;
