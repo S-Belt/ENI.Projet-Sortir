@@ -33,13 +33,12 @@ class MainController extends AbstractController
     /**
      * @Route("", name="home")
      */
-    public function home(CampusRepository $repository, SortieRepository $sortieRepository
-                            ,ParticipantRepository $participantRepository, EtatService $service): Response
+    public function home(CampusRepository $repository
+                            , EtatService $service): Response
     {
 
         $liste = $service->etat();
-        $sortie = $sortieRepository->findAll();
-        $participant = $participantRepository->findAll();
+
         $campus = $repository->findAll();
 
         //test. Le service recupere deja la liste.
@@ -48,8 +47,7 @@ class MainController extends AbstractController
         return $this->render('main/home.html.twig', [
             'campus' => $campus,
             'liste' => $liste,
-            'participant' => $participant,
-            'sortie' => $sortie
+
         ]);
 
 

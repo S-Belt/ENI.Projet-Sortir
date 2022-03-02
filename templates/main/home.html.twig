@@ -97,24 +97,24 @@
     </article>
 </div>
 
-{#    <div id="accueilSurMobile">#}
-{#        <h2>Mes sorties : </h2>#}
-{#        <table id = "tableHome">#}
-{#            <tr id = "trTitres">#}
-{#                <td>Nom de la sortie</td>#}
-{#                <td>Date de la sortie</td>#}
-{#                <td>Lieu</td>#}
-{#            </tr>#}
-{#            {% for mesSorties in sortie %}#}
-{#                {% if mesSorties.organisateur.id is same as participant.id %}#}
-{#            <tr id = "trHome">#}
-{#                <td>{{ mesSorties.nom }}</td>#}
-{#                <td> {{ mesSorties.dateHeureDebut|date("d/m/Y h:m") }} </td>#}
-{#                <td> {{ mesSorties.lieu }}</td>#}
-{#            </tr>#}
-{#                {% endif %}#}
-{#            {% endfor %}#}
-{#        </table>#}
-{#    </div>#}
+    <div id="accueilSurMobile">
+        <h2>Mes sorties : </h2>
+        <table id = "tableHome">
+            <tr id = "trTitres">
+                <td>Nom de la sortie</td>
+                <td>Date de la sortie</td>
+                <td>Lieu</td>
+            </tr>
+            {% for mesSorties in liste%}
+                {% if mesSorties.organisateur.id is same as(app.user.id) %}
+            <tr id = "trHome">
+                <td>{{ mesSorties.nom }}</td>
+                <td> {{ mesSorties.dateHeureDebut|date("d/m/Y h:m") }} </td>
+                <td> {{ mesSorties.lieu.nom }}</td>
+            </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}
 
