@@ -95,7 +95,7 @@
 
         </tbody>
     </table>
-        <div>
+        <div id ="boutonActionSurSortie">
             {% if app.user.pseudo is same as(sortie.organisateur.pseudo)or 'ROLE_ADMIN' in app.user.roles %}
                 <button onclick="window.location.href='{{ path('sortie_motifAnnulation', {'id':sortie.id}) }}'">{% if sortie.etat.libelle is same as("Annulée") %}Modifier le motif d'annulation {% else %} Annuler la sortie {% endif %}</button>
                 {% if sortie.etat.libelle is same as('Créée') %}
@@ -122,17 +122,7 @@
                     {% endif %}
                 {% endfor %}
 
-
-
-
-
-
-
-
-
-
-
         </div>
     </article>
-{% endblock %}
+        {% endblock %}
 

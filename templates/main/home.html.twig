@@ -12,6 +12,8 @@
         <p>Participant: {{ app.user.prenom }} {{ app.user.nom[:1]|upper }}.</p>
     </aside>
 
+<div id ="accueilSurDesktop">
+
         <h3>Filtrer les sorties</h3>
     <form method="post" action="{{path('sortie_recherche')}}">
         <article id="articleRecherche">
@@ -93,6 +95,26 @@
         <button id="buttonCreate" onclick="window.location.href = '{{ path('main_creerSortie') }}'">Créer une sortie</button>
         </div>
     </article>
+</div>
 
+{#    <div id="accueilSurMobile">#}
+{#        <h2>Mes sorties : </h2>#}
+{#        <table id = "tableHome">#}
+{#            <tr id = "trTitres">#}
+{#                <td>Nom de la sortie</td>#}
+{#                <td>Date de la sortie</td>#}
+{#                <td>Lieu</td>#}
+{#            </tr>#}
+{#            {% for mesSorties in sortie %}#}
+{#                {% if mesSorties.organisateur.id is same as participant.id %}#}
+{#            <tr id = "trHome">#}
+{#                <td>{{ mesSorties.nom }}</td>#}
+{#                <td> {{ mesSorties.dateHeureDebut|date("d/m/Y h:m") }} </td>#}
+{#                <td> {{ mesSorties.lieu }}</td>#}
+{#            </tr>#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#        </table>#}
+{#    </div>#}
 {% endblock %}
 

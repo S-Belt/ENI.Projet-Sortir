@@ -1,4 +1,6 @@
 /* ===================== Valeurs par defaut ===================== */
+#accueilSurDesktop {visibility: visible;}
+#accueilSurMobile {visibility: hidden;}
 
 input{
     border-radius: 15px;
@@ -555,15 +557,14 @@ button > .adminButton {
 /* ===================== Responsive ===================== */
 
 @media only screen and (max-width: 480px) {
-    body{
-        padding: 2%;
-        margin: 0;
-    }
-    nav{
-        margin: 1%;
-        font-size: 0.7em;
-    }
-
+ #boutonActionSurSortie {
+     visibility: hidden;
+ }
+nav {
+    visibility: hidden;
+}
+#accueilSurDesktop{visibility: hidden;}
+#accueilSurMobile{visibility: visible;}
 }
 
 

@@ -7,6 +7,7 @@ use App\Form\MotifAnnulationType;
 use App\Form\VilleFormType;
 use App\Repository\CampusRepository;
 use App\Repository\EtatRepository;
+use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
 use App\Service\EtatService;
 use Doctrine\ORM\EntityManager;
@@ -188,5 +189,16 @@ class SortieController extends AbstractController
         return $this->redirectToRoute('main_afficher', ['id' => $id]);
     }
 
+//    /**
+//     * @Route("sortie/mesSortiesMobile/{id}", name="sortie_mesSortiesMobile")
+//     */
+//    public function mesSortiesMobile($id, SortieRepository $sortieRepository, ParticipantRepository $participantRepository, Request $request){
+//        $sortie = $sortieRepository->find($id);
+//        $participant = $participantRepository->find($id);
+//        return $this->render("sortie/mesSortiesMobile.html.twig",[
+//            'sortie' => $sortie, 'participant' => $participant
+//        ]);
+//
+//    }
 
 }
