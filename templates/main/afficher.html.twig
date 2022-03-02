@@ -78,6 +78,9 @@
 
     <article id="sortieParticipants">
     <h3>Liste des participants inscrits:</h3>
+        {% if sortie.participants.count is same as(0) %}
+        <h4>Aucuns participants inscrits à cette sortie. Soyez le premier!</h4>
+        {% else %}
     <table class="resultat">
         <thead>
         <tr>
@@ -86,6 +89,8 @@
         </tr>
         </thead>
         <tbody>
+
+
         {% for participant in sortie.participants %}
         <tr>
             <td><a href="{{ path('main_profil', {'id':participant.id}) }}"> {{ participant.pseudo }}</a></td>
@@ -93,6 +98,7 @@
         </tr>
         {% endfor %}
 
+        {% endif %}
         </tbody>
     </table>
         <div id ="boutonActionSurSortie">
