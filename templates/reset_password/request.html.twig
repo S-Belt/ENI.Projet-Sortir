@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réinitiliser mot de passe{% endblock %}
+{% block title %}Réinitialiser mot de passe{% endblock %}
 
 {% block main %}
     {% for flash_error in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
-    <h1>Réinitiliser</h1>
+    <h1>Réinitialiser</h1>
 
     {{ form_start(requestForm) }}
         {{ form_row(requestForm.email) }}
         <div>
             <small>
-                Entrez votre mail et on vous enverra un mail.
+                Vous recevrez un lien pour réinitialiser votre mot de passe
             </small>
         </div>
 
-        <button class="btn btn-primary">Réinitiliser</button>
+        <button class="btn btn-primary">Réinitialiser</button>
     {{ form_end(requestForm) }}
 {% endblock %}
