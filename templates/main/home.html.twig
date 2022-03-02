@@ -108,7 +108,7 @@
             {% for mesSorties in liste%}
                 {% if mesSorties.organisateur.id is same as(app.user.id) %}
             <tr id = "trHome">
-                <td>{{ mesSorties.nom }}</td>
+                <td> <a href="{{ path('main_afficher', {'id': mesSorties.id}) }}"> {{ mesSorties.nom }} </a></td>
                 <td> {{ mesSorties.dateHeureDebut|date("d/m/Y h:m") }} </td>
                 <td> {{ mesSorties.lieu.nom }}</td>
             </tr>
