@@ -566,7 +566,7 @@ button > .adminButton {
      visibility: hidden;
  }
 nav {
-    visibility: hidden;
+    display: hidden;
 }
 #accueilSurDesktop{display: none;}
 #accueilSurMobile{visibility: visible;}
