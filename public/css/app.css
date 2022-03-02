@@ -333,6 +333,7 @@ select {
     max-width: 15px;
 }
 
+
 #sortieGauche{
     float: left;
     padding-left: 10%;
@@ -572,6 +573,34 @@ nav {
 #accueilSurMobile{visibility: visible;}
 #messageAccueil{display: none;}
     #logoSurMobile{display: block;}
+
+    .detailsSortie{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+    #sortieDroite{
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 20px;
+        padding: 0;
+
+    }
+
+    #sortieGauche{
+        padding: 0;
+    }
+    main{
+        text-align: left;
+    }
+
+
+
+
+
 }
+
+
 
 
