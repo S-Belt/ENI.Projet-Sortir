@@ -6,11 +6,13 @@
 {% endblock %}
 
 {% block main %}
+    <div id ="messageAccueil">
     <h2>Bienvenue sur SORTIR.com !</h2>
     <aside id="asideHome">
         <p>Date du jour: {{ "now"|date("d/m/Y") }}</p>
         <p>Participant: {{ app.user.prenom }} {{ app.user.nom[:1]|upper }}.</p>
     </aside>
+    </div>
 
 <div id ="accueilSurDesktop">
 
@@ -96,7 +98,7 @@
         </div>
     </article>
 </div>
-
+    <a href="{{ path('main_home') }}"><img class = "logo" src="{{asset('img/exit.jpg') }}" alt = "logo provisoire"></a>
     <div id="accueilSurMobile">
         <h2>Mes sorties : </h2>
         <table id = "tableHome">

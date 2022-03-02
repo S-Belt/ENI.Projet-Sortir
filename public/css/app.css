@@ -1,6 +1,7 @@
 /* ===================== Valeurs par defaut ===================== */
 #accueilSurDesktop {visibility: visible;}
 #accueilSurMobile {visibility: hidden;}
+#logoSurMobile{display:none;}
 
 input{
     border-radius: 15px;
@@ -270,9 +271,8 @@ main {
 }
 
 .infoProfil{
-    text-align: center;
-    padding-left: 46.5%;
-
+    display: flex;
+    justify-content: center;
 }
 
 .infoProfil  tr {
@@ -570,6 +570,8 @@ nav {
 }
 #accueilSurDesktop{display: none;}
 #accueilSurMobile{visibility: visible;}
+#messageAccueil{display: none;}
+    #logoSurMobile{display: block;}
 }
 
 
