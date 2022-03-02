@@ -23,7 +23,7 @@ class EtatService
     public function etat()
     {
 
-        $sorties = $this->sortieRepository->findAll();
+        $sorties = $this->sortieRepository->accueil();
         $etats = $this->etatRepository->findAll();
         $dateActuelle = new \DateTime();
         $dateDemain = $dateActuelle->modify('+1 day');

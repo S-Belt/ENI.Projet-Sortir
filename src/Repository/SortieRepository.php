@@ -63,6 +63,11 @@ class SortieRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function accueil(){
+        $queryBuilder = $this->createQueryBuilder('q');
+        return $queryBuilder->getQuery()->getResult();
+    }
+
 
 
     public function recherche($campus = null, $contient = null, $dateDebut = null, $dateFin = null,
