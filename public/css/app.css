@@ -58,12 +58,13 @@ button:hover{
     margin-right: 40px;
     width:40px;
     height:40px;
-    background:white;
+
     text-align:center;
     overflow:hidden;
     font-size:1.5em;
     color:#fff;
     border-radius:50px;
+
 }
 
 #sortie_form_ville {
@@ -76,7 +77,7 @@ button:hover{
 
 .AjouterVilleEtLieu{
     display:inline-flex;
-    margin
+
     flex-direction: row;
 }
 
@@ -327,6 +328,10 @@ select {
 }
 
 /* ===================== Afficher sortie ===================== */
+
+.logoPlus{
+    max-width: 15px;
+}
 
 #sortieGauche{
     float: left;

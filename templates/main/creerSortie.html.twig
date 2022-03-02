@@ -17,9 +17,9 @@
     {{ form_row(sortieForm.campus) }}
     <div class = "AjouterVilleEtLieu">
     {{ form_row(sortieForm.ville) }}
-    <button class ="boutonAjouter" onclick="window.location.href = '{{ path('sortie_ajouterVille') }}'" >  </button>
+    <button class ="boutonAjouter" onclick="window.location.href = '{{ path('sortie_ajouterVille') }}'" ><img class="logoPlus" src="{{ asset('img/Plus-PNG-Image.png') }}" alt="logo ajouter"></button>
     {{ form_row(sortieForm.Lieu) }}
-    <button class ="boutonAjouter" onclick="window.location.href = '{{ path('main_creerLieu') }}'" >  </button>
+    <button class ="boutonAjouter" onclick="window.location.href = '{{ path('main_creerLieu') }}'" ><img class="logoPlus" src="{{ asset('img/Plus-PNG-Image.png') }}" alt="logo ajouter"></button>
     </div>
     {{ form_row(sortieForm.rue) }}
     {{ form_row(sortieForm.codePostal) }}
