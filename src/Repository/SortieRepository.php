@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Participant;
 use App\Entity\Sortie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -117,5 +118,26 @@ class SortieRepository extends ServiceEntityRepository
 
         $query = $queryBuilder->getQuery();
         return $query->getResult();
+    }
+
+    public function homePage()
+    {
+        $queryBuilder = $this->createQueryBuilder('s');
+
+        $queryBuilder
+    ->select('s', 'p')
+            //->addSelect('s.nom', 's.dateHeureDebut', 's.dateLimiteInscription','org.pseudo','p.pseudo')
+            ->leftJoin('s.organisateur', 'org')
+            //->addSelect('org.pseudo') //pour qu'il fasse qu'une seule requete
+            ->leftJoin('s.etat', 'etat')
+            //->addSelect('etat.libelle')
+            ->leftJoin('s.participants', 'p');
+            //->addSelect('p.pseudo');
+
+        $query = $queryBuilder->getQuery();
+
+        $results = $query->getResult();
+        return $results;
+
     }
 }
