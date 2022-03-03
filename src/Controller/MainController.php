@@ -34,12 +34,13 @@ class MainController extends AbstractController
      * @Route("", name="home")
      */
     public function home(CampusRepository $repository
-                            , EtatService $service): Response
+                            , EtatService $service, SortieRepository $sortieRepository): Response
     {
 
         $liste = $service->etat();
 
         $campus = $repository->findAll();
+
 
         //test. Le service recupere deja la liste.
         //$liste = $sortieRepository->findAll();

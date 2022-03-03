@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Participant;
 use App\Entity\Sortie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -63,9 +64,18 @@ class SortieRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-    public function accueil(){
-        $queryBuilder = $this->createQueryBuilder('q');
+
+    //methode pour moins de requetes ( marche pas encore tres bien)
+    public function accueil(Participant $participant){
+        $queryBuilder = $this->createQueryBuilder('q')
+            ->select('s', 'p')
+            ->from('App:Sortie', 's')
+            ->leftJoin('s.organisateur', 'p')
+            ->where('p = :participant')
+            ->setParameter(':participant', $participant);
+
         return $queryBuilder->getQuery()->getResult();
+
     }
 
 

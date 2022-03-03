@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Participant;
 use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -23,7 +24,10 @@ class EtatService
     public function etat()
     {
 
-        $sorties = $this->sortieRepository->accueil();
+        //test pour avoir moins de requetes
+        //$sorties = $this->sortieRepository->accueil($participant);
+
+        $sorties = $this->sortieRepository->findAll();
         $etats = $this->etatRepository->findAll();
         $dateActuelle = new \DateTime();
         $dateDemain = $dateActuelle->modify('+1 day');
@@ -122,5 +126,7 @@ class EtatService
         $this->entityManager->persist($sortie);
         $this->entityManager->flush();
     }
+
+
 
 }
