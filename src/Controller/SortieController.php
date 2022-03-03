@@ -97,7 +97,7 @@ class SortieController extends AbstractController
      * @Route("sortie/recherche", name="sortie_recherche")
      */
     public function recherche(SortieRepository $sortieRepository, Request $request, CampusRepository $campusRepository){
-        $sortis = $sortieRepository->findAll();
+        $sortis = $sortieRepository->homePage();
         $campuss = $campusRepository->findAll();
 
 
