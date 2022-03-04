@@ -68,13 +68,4 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
         return self::LOGIN_ROUTE===$request->attributes->get('_route') && $request->isMethod('POST');
     }
 
-//class TokenBasedRememberMeServices extends AbstractRememberMeServices
-//{
-//....
-//    protected function onLoginSuccess(Request $request, Response $response, TokenInterface $token)
-//    {
-//        ...
-//        $value = $this->generateCookieValue(\get_class( participant), $participant->getEmail(), $expires, $participant->getPassword());
-//        ...
-//    }
 }
