@@ -75,8 +75,6 @@ class SortieController extends AbstractController
 
     public function annulerSortie (int $id, EntityManagerInterface  $entityManager, SortieRepository $sortieRepository, EtatRepository $etatRepository){
 
-//        trop d'erreur si on vérifie une seconde condition mais il faut quand même le faire
-
         $sortie= $sortieRepository->find($id);
         $etats= $etatRepository->findAll();
 
