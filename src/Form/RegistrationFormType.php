@@ -7,6 +7,7 @@ use App\Entity\Participant;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,7 +24,16 @@ class RegistrationFormType extends AbstractType
             ->add('prenom')
             ->add('pseudo')
             ->add('email')
-            ->add('telephone')
+            ->add('telephone', IntegerType::class, [
+                'constraints'=> [
+                    new Length([
+                        'min' => 10,
+                        'minMessage' => 'Le numero de telephone doit faire 10 chifrres!',
+                        'max' => 10,
+                        'maxMessage' => 'Le numero de telephone doit faire 10 chifrres!'
+                    ])
+                ]
+            ])
             ->add('campus', EntityType::class,['class'=>Campus::class,'choice_label'=>'nom'])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
@@ -33,11 +43,11 @@ class RegistrationFormType extends AbstractType
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Veuillez saisir un mot de passe',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe doit faire contenir au minimum {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
